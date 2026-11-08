@@ -1,0 +1,122 @@
+/* OFENSIVA CSS - TechSaber+
+   Estilos da tela de ofensiva do aluno */
+
+/* LAYOUT PRINCIPAL */
+.ofensiva-main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* BANNER */
+.banner-section {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.banner-ofensiva {
+    background: var(--cor-destaque); /* rosa */
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: var(--fonte-normal);
+    display: inline-block;
+}
+
+/* CARD OFENSIVA GRANDE */
+.ofensiva-card-grande {
+    text-align: center;
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.ofensiva-fogo {
+    font-size: 3rem;
+    display: block;
+}
+
+.ofensiva-numero {
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--texto-claro);
+    line-height: 1;
+}
+
+.ofensiva-card-grande p {
+    font-size: var(--fonte-pequena);
+    color: var(--cor-destaque);
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+/* barras de progresso */
+.ofensiva-barras {
+    display: flex;
+    gap: 0.4rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.barra {
+    width: 24px;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--card-borda);
+}
+
+.barra.ativa {
+    background: var(--cor-destaque);
+}
+
+/* BOTÕES */
+.ofensiva-botoes {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-bloco {
+    background: var(--card-fundo);
+    color: var(--texto-claro);
+    border: 1px solid var(--card-borda);
+    padding: 0.9rem 2.5rem;
+    border-radius: 50px;
+    font-family: var(--fonte);
+    font-size: var(--fonte-normal);
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.btn-bloco:hover {
+    border-color: var(--cor-primaria);
+}
+
+/* RESPONSIVO */
+@media (max-width: 480px) {
+    .ofensiva-botoes {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-bloco {
+        width: 100%;
+        text-align: center;
+    }
+
+    .ofensiva-card-grande {
+        padding: 2rem;
+    }
+
+    .ofensiva-numero {
+        font-size: 3.5rem;
+    }
+}

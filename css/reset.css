@@ -1,0 +1,21 @@
+/* RESET CSS - TechSaber+
+   Remove os estilos padrão do browser
+   para garantir consistência entre navegadores */
+
+* {
+    /* Remove espaço externo de todos os elementos */
+    margin: 0;
+
+    /* Remove espaço interno de todos os elementos */
+    padding: 0;
+
+    /* Faz o tamanho dos elementos incluir borda e padding
+       no cálculo, evitando que elementos "estourem" o layout */
+    box-sizing: border-box;
+
+    /* remove borda e padding padrão do fieldset */
+      fieldset {
+    border: none;
+    padding: 0;
+}
+}

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSaber+ | Trilha do Curso</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/curso.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@500;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina-curso">
+
+    <!-- NAVBAR -->
+    <header class="topo">
+        <nav class="topo-nav">
+            <a href="dashboard-aluno.html" class="logo">TechSaber+</a>
+            <div class="topo-botoes">
+                <button class="btn-voltar-pagina" onclick="history.back()">Voltar</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="curso-main">
+
+        <!-- CABEÇALHO DO CURSO -->
+        <section class="curso-cabecalho">
+            <p class="eyebrow">Trilha do curso</p>
+            <h1 id="titulo-curso"></h1>
+        </section>
+
+        <!-- TRILHA: preenchida pelo JS -->
+        <section class="trilha-vertical" id="trilha-vertical" aria-label="Trilha de atividades"></section>
+
+        <!-- TROFÉU: aparece quando o módulo é concluído -->
+        <article class="modulo-concluido" id="modulo-concluido" style="display:none;">
+            <span class="modulo-icone" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 21h8"/>
+                    <path d="M12 17v4"/>
+                    <path d="M7 4h10v5a5 5 0 0 1-10 0V4z"/>
+                    <path d="M7 6H4v1a3 3 0 0 0 3 3"/>
+                    <path d="M17 6h3v1a3 3 0 0 1-3 3"/>
+                </svg>
+            </span>
+            <h2>Módulo concluído!</h2>
+            <p>Você completou todas as etapas deste curso.</p>
+        </article>
+
+    </main>
+
+    <script>
+        /* DADOS DE CADA CURSO
+           5 etapas na ordem:
+           0 - Artigo 1  → etapa=1
+           1 - Artigo 2  → etapa=2
+           2 - Quiz 1    → quiz=1
+           3 - Quiz 2    → quiz=2
+           4 - Avaliação Final */
+
+        const cursos = {
+            "Front-End": {
+                titulo: "Front <span class='destaque'>End</span>",
+                atividades: [
+                    { titulo: "HTML Semântico",      resumo: "Tags semânticas, DOM e estrutura de páginas web.",    tipo: "artigo1"   },
+                    { titulo: "CSS3 e Estilização",  resumo: "Flexbox, Grid, Box Model e responsividade.",          tipo: "artigo2"   },
+                    { titulo: "Quiz HTML",           resumo: "5 questões sobre HTML semântico.",                    tipo: "quiz1"     },
+                    { titulo: "Quiz CSS",            resumo: "5 questões sobre CSS3 e estilização.",                tipo: "quiz2"     },
+                    { titulo: "Avaliação Final",     resumo: "10 questões cobrindo todo o conteúdo de Front End.", tipo: "avaliacao" }
+                ]
+            },
+            "Back-End": {
+                titulo: "Back <span class='destaque'>End</span>",
+                atividades: [
+                    { titulo: "C# e .NET",           resumo: "CLR, tipos de dados e gerenciamento de memória.",     tipo: "artigo1"   },
+                    { titulo: "POO em C#",           resumo: "Interfaces, LINQ, async/await e tratamento de erros.", tipo: "artigo2"   },
+                    { titulo: "Quiz C# Básico",      resumo: "5 questões sobre C# e .NET.",                        tipo: "quiz1"     },
+                    { titulo: "Quiz POO",            resumo: "5 questões sobre orientação a objetos em C#.",       tipo: "quiz2"     },
+                    { titulo: "Avaliação Final",     resumo: "10 questões cobrindo todo o Back End.",              tipo: "avaliacao" }
+                ]
+            },
+            "Banco-de-Dados": {
+                titulo: "Banco de <span class='destaque'>Dados</span>",
+                atividades: [
+                    { titulo: "SQL Básico",          resumo: "SELECT, WHERE, JOIN e comandos essenciais.",          tipo: "artigo1"   },
+                    { titulo: "SQL Avançado",        resumo: "ACID, normalização, views e data warehouse.",         tipo: "artigo2"   },
+                    { titulo: "Quiz SQL Básico",     resumo: "5 questões sobre comandos SQL básicos.",              tipo: "quiz1"     },
+                    { titulo: "Quiz SQL Avançado",   resumo: "5 questões sobre conceitos avançados de banco.",      tipo: "quiz2"     },
+                    { titulo: "Avaliação Final",     resumo: "10 questões cobrindo todo o Banco de Dados.",        tipo: "avaliacao" }
+                ]
+            },
+            "Engenharia-de-Software": {
+                titulo: "Engenharia de <span class='destaque'>Software</span>",
+                atividades: [
+                    { titulo: "Manifesto e Scrum",   resumo: "Princípios ágeis, Sprints e cerimônias do Scrum.",   tipo: "artigo1"   },
+                    { titulo: "Práticas Avançadas",  resumo: "CI, refatoração, MVP, UML e microserviços.",         tipo: "artigo2"   },
+                    { titulo: "Quiz Scrum",          resumo: "5 questões sobre Scrum e metodologias ágeis.",       tipo: "quiz1"     },
+                    { titulo: "Quiz Eng. Software",  resumo: "5 questões sobre práticas avançadas.",               tipo: "quiz2"     },
+                    { titulo: "Avaliação Final",     resumo: "10 questões sobre Engenharia de Software.",         tipo: "avaliacao" }
+                ]
+            },
+            "Soft-Skills": {
+                titulo: "Soft <span class='destaque'>Skills</span>",
+                atividades: [
+                    { titulo: "Comunicação",         resumo: "Comunicação assertiva, escuta ativa e feedback.",    tipo: "artigo1"   },
+                    { titulo: "Liderança",           resumo: "Liderança, inteligência emocional e resiliência.",   tipo: "artigo2"   },
+                    { titulo: "Quiz Comunicação",    resumo: "5 questões sobre comunicação e trabalho em equipe.", tipo: "quiz1"     },
+                    { titulo: "Quiz Liderança",      resumo: "5 questões sobre liderança e inteligência emocional.", tipo: "quiz2"    },
+                    { titulo: "Avaliação Final",     resumo: "10 questões sobre Soft Skills.",                    tipo: "avaliacao" }
+                ]
+            },
+            "Acessibilidade-Libras": {
+                titulo: "Acessibilidade <span class='destaque'>Libras</span>",
+                atividades: [
+                    { titulo: "Introdução a Libras", resumo: "Lei 10.436, história e importância da Libras.",      tipo: "artigo1"   },
+                    { titulo: "Gramática Libras",    resumo: "Classificadores, configuração de mão e cultura.",    tipo: "artigo2"   },
+                    { titulo: "Quiz Libras Básico",  resumo: "5 questões sobre introdução à Libras.",              tipo: "quiz1"     },
+                    { titulo: "Quiz Gramática",      resumo: "5 questões sobre gramática e cultura surda.",        tipo: "quiz2"     },
+                    { titulo: "Avaliação Final",     resumo: "10 questões sobre Libras e Acessibilidade.",        tipo: "avaliacao" }
+                ]
+            },
+            "Inteligencia-Artificial": {
+                titulo: "Inteligência <span class='destaque'>Artificial</span>",
+                atividades: [
+                    { titulo: "Fundamentos de IA",   resumo: "Machine Learning, Deep Learning e IA Generativa.",   tipo: "artigo1"   },
+                    { titulo: "IA Avançada",         resumo: "Ética, viés, redes neurais e processamento.",        tipo: "artigo2"   },
+                    { titulo: "Quiz IA Básico",      resumo: "5 questões sobre fundamentos de IA.",                tipo: "quiz1"     },
+                    { titulo: "Quiz IA Avançado",    resumo: "5 questões sobre IA avançada e ética.",              tipo: "quiz2"     },
+                    { titulo: "Avaliação Final",     resumo: "10 questões sobre Inteligência Artificial.",        tipo: "avaliacao" }
+                ]
+            }
+        };
+
+        /* Ícones em linha (sem emoji) */
+        const ICONES = {
+            concluida: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>`,
+            andamento: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`,
+            bloqueada: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>`
+        };
+
+        /* Lados alternados da trilha */
+        const lados = ["esquerda", "direita", "esquerda", "direita", "esquerda"];
+
+        /* Pega o curso da URL */
+        const params   = new URLSearchParams(window.location.search);
+        const cursoKey = params.get("curso") || "Front-End";
+        const curso    = cursos[cursoKey] || cursos["Front-End"];
+        localStorage.setItem("ultimoCursoNome", curso.titulo.replace(/<[^>]*>/g, ""));
+        localStorage.setItem("ultimoCurso", cursoKey);
+
+        /* Progresso salvo pelos artigos e quizzes
+           0 = só artigo 1 disponível
+           1 = artigo 1 lido → artigo 2 disponível
+           2 = artigo 2 lido → quiz 1 disponível
+           3 = quiz 1 passou → quiz 2 disponível
+           4 = quiz 2 passou → avaliação disponível
+           5 = avaliação passou → módulo concluído */
+        const progressoKey = `progresso-${cursoKey}`;
+        const concluido    = localStorage.getItem(`concluido-${cursoKey}`) === "true";
+        const progresso    = parseInt(localStorage.getItem(progressoKey) || "0", 10);
+
+        document.getElementById("titulo-curso").innerHTML = curso.titulo;
+
+        function getStatus(index) {
+            if (concluido)           return "concluida";
+            if (progresso > index)   return "concluida";
+            if (progresso === index) return "andamento";
+            return "bloqueada";
+        }
+
+        function getLink(tipo) {
+            if (tipo === "artigo1")   return `artigo.html?curso=${cursoKey}&etapa=1`;
+            if (tipo === "artigo2")   return `artigo.html?curso=${cursoKey}&etapa=2`;
+            if (tipo === "quiz1")     return `quiz-modulo.html?curso=${cursoKey}&quiz=1`;
+            if (tipo === "quiz2")     return `quiz-modulo.html?curso=${cursoKey}&quiz=2`;
+            if (tipo === "avaliacao") return `avaliacao.html?curso=${cursoKey}`;
+            return "#";
+        }
+
+        /* Monta a trilha */
+        const trilha = document.getElementById("trilha-vertical");
+
+        curso.atividades.forEach((at, index) => {
+            const status = getStatus(index);
+            const lado   = lados[index];
+            const link   = getLink(at.tipo);
+
+            const article = document.createElement("article");
+            article.className = `atividade-item ${lado} ${status}`;
+            article.setAttribute("aria-label", `${at.titulo}, ${status}`);
+
+            const pontoHTML = `
+                <span class="atividade-ponto" role="img" aria-label="Status: ${status}">
+                    ${ICONES[status]}
+                </span>`;
+
+            let conteudo = "";
+
+            if (status === "andamento") {
+                conteudo = `
+                    <section class="atividade-conteudo card andamento-card">
+                        <span class="chip chip--andamento">Em andamento</span>
+                        <h2>${at.titulo}</h2>
+                        <p>${at.resumo}</p>
+                        <a class="btn-cta" href="${link}" aria-label="Iniciar ${at.titulo}">Iniciar</a>
+                    </section>`;
+
+            } else if (status === "concluida") {
+                conteudo = `
+                    <section class="atividade-conteudo card concluida-card">
+                        <span class="chip chip--concluida">Concluída</span>
+                        <h2>${at.titulo}</h2>
+                        <p>${at.resumo}</p>
+                        <a class="btn-vidro" href="${link}" aria-label="Rever ${at.titulo}">Rever</a>
+                    </section>`;
+
+            } else {
+                conteudo = `
+                    <section class="atividade-conteudo card bloqueado-card" aria-disabled="true">
+                        <h2>${at.titulo}</h2>
+                        <p>${at.resumo}</p>
+                        <p class="aviso-bloqueado">Complete a etapa anterior para desbloquear</p>
+                    </section>`;
+            }
+
+            article.innerHTML = lado === "esquerda"
+                ? conteudo + pontoHTML + `<span class="vazio" aria-hidden="true"></span>`
+                : `<span class="vazio" aria-hidden="true"></span>` + pontoHTML + conteudo;
+
+            trilha.appendChild(article);
+        });
+
+        if (concluido) {
+            document.getElementById("modulo-concluido").style.display = "flex";
+        }
+    </script>
+
+    <script src="js/main.js"></script>
+
+    <script src="js/assistente.js"></script>
+    
+</body>
+</html>

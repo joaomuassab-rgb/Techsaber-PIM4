@@ -1,0 +1,358 @@
+/* BIBLIOTECA.CSS - TechSaber+ (Biblioteca de Cursos)
+   Categorias em lacunas verticais lado a lado, com o cartão da tela de perfil. */
+
+.pagina-biblioteca {
+    --azul: #2563eb;
+    --azul-vivo: #0ea5e9;
+    --ciano: #22d3ee;
+    --cinza-900: #0f172a;
+    --cinza-700: #334155;
+    --cinza-500: #64748b;
+
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--cinza-900);
+    background:
+        radial-gradient(70% 50% at 10% 0%, rgba(14, 165, 233, 0.4), transparent 70%),
+        radial-gradient(60% 50% at 95% 15%, rgba(37, 99, 235, 0.3), transparent 70%),
+        radial-gradient(70% 60% at 50% 100%, rgba(34, 211, 238, 0.3), transparent 70%),
+        linear-gradient(180deg, #dbeafe 0%, #bfdbfe 50%, #93c5fd 100%);
+
+}
+
+/* UTILITÁRIO: texto só para leitor de tela */
+.pagina-biblioteca .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* NAVBAR EM VIDRO */
+.pagina-biblioteca .topo {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 1rem 1.5rem 0;
+}
+
+.pagina-biblioteca .topo-nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.6rem 0.6rem 1.25rem;
+    border-radius: 999px;
+    background: rgba(219, 234, 254, 0.7);
+    border: 1px solid rgba(147, 197, 253, 0.6);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.1);
+}
+
+.pagina-biblioteca .logo {
+    font-family: 'Orbitron', 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--cinza-900);
+    text-decoration: none;
+}
+
+.pagina-biblioteca .btn-voltar-pagina {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 1.3rem;
+    border: 2px solid var(--azul);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--azul);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.pagina-biblioteca .btn-voltar-pagina:hover {
+    background: var(--azul);
+    color: #ffffff;
+    transform: scale(1.04);
+}
+
+.pagina-biblioteca .btn-voltar-pagina:focus-visible {
+    outline: 3px solid var(--ciano);
+    outline-offset: 3px;
+}
+
+/* ÁREA PRINCIPAL */
+.pagina-biblioteca .conteudo {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* BUSCA */
+.pagina-biblioteca .busca-area {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.pagina-biblioteca .busca-area input {
+    width: 100%;
+    padding: 1.1rem 1.5rem;
+    border-radius: 999px;
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    background: rgba(239, 246, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.06);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: var(--cinza-900);
+    text-align: center;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pagina-biblioteca .busca-area input::placeholder {
+    color: var(--cinza-500);
+}
+
+.pagina-biblioteca .busca-area input:focus {
+    outline: none;
+    border-color: var(--azul);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+/* TÍTULO */
+.pagina-biblioteca .titulo-categorias {
+    margin: 3rem 0 2.25rem;
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.25rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #2563eb;
+    -webkit-text-fill-color: #2563eb;
+    background: none;
+}
+
+/* CATEGORIAS: lacunas verticais lado a lado, sem fundo atrás */
+.pagina-biblioteca .categorias {
+    display: flex;
+    gap: 1rem;
+    height: clamp(460px, 72vh, 700px);
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.pagina-biblioteca .categoria {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.75rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(147, 197, 253, 0.7);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    overflow: hidden;
+    color: var(--cinza-900);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        flex-grow 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
+        background 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+/* Número no topo */
+.pagina-biblioteca .categoria .numero {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--azul);
+    opacity: 0.7;
+}
+
+/* Quadrado azul com o ícone */
+.pagina-biblioteca .categoria .icone {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    color: #ffffff;
+}
+
+.pagina-biblioteca .categoria .icone svg {
+    display: block;
+    width: 26px;
+    height: 26px;
+}
+
+/* Nome curto na vertical, quando a lacuna está fechada */
+.pagina-biblioteca .categoria .curto {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--cinza-900);
+}
+
+/* Nome completo, que aparece quando a lacuna abre */
+.pagina-biblioteca .categoria .completo {
+    display: none;
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--cinza-900);
+}
+
+.pagina-biblioteca .categoria .completo::after {
+    content: "Explorar";
+    display: block;
+    margin-top: 0.35rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--cinza-500);
+}
+
+/* Bolinha com a seta, embaixo */
+.pagina-biblioteca .categoria::after {
+    content: "\2192";
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(37, 99, 235, 0.35);
+    color: var(--azul);
+    font-size: 1.1rem;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+/* Quando alguma lacuna está aberta, as outras encolhem */
+.pagina-biblioteca .categorias:hover .categoria:not(:hover):not(:focus-visible) {
+    flex-grow: 1;
+}
+
+/* Lacuna aberta: mouse ou teclado */
+.pagina-biblioteca .categoria:hover,
+.pagina-biblioteca .categoria:focus-visible {
+    flex-grow: 3.2;
+    outline: none;
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(37, 99, 235, 0.5);
+    box-shadow: 0 14px 32px rgba(37, 99, 235, 0.16);
+}
+
+.pagina-biblioteca .categoria:hover .curto,
+.pagina-biblioteca .categoria:focus-visible .curto {
+    display: none;
+}
+
+.pagina-biblioteca .categoria:hover .completo,
+.pagina-biblioteca .categoria:focus-visible .completo {
+    display: block;
+}
+
+.pagina-biblioteca .categoria:hover::after,
+.pagina-biblioteca .categoria:focus-visible::after {
+    background: var(--azul);
+    border-color: var(--azul);
+    color: #ffffff;
+}
+
+/* Categoria filtrada pela busca */
+.pagina-biblioteca .categoria[hidden] {
+    display: none !important;
+}
+
+/* CELULAR: as lacunas viram faixas empilhadas */
+@media (max-width: 720px) {
+    .pagina-biblioteca .conteudo {
+           padding: 2rem 1rem 6rem;
+    }
+
+    .pagina-biblioteca .categorias {
+        flex-direction: column;
+        height: auto;
+        gap: 0.75rem;
+    }
+
+    .pagina-biblioteca .categoria {
+        flex: none;
+        width: 100%;
+        height: 88px;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 1.25rem;
+        border-radius: 22px;
+    }
+
+    .pagina-biblioteca .categoria .numero,
+    .pagina-biblioteca .categoria .curto {
+        display: none;
+    }
+
+    .pagina-biblioteca .categoria .icone {
+        width: 48px;
+        height: 48px;
+    }
+
+    .pagina-biblioteca .categoria .completo {
+        display: block;
+        flex: 1;
+        margin: 0 1rem;
+        text-align: left;
+        font-size: 1.1rem;
+    }
+
+    .pagina-biblioteca .categoria .completo::after {
+        display: none;
+    }
+
+    .pagina-biblioteca .categorias:hover .categoria:not(:hover) {
+        flex-grow: 0;
+    }
+
+    .pagina-biblioteca .categoria:hover,
+    .pagina-biblioteca .categoria:focus-visible {
+        flex-grow: 0;
+    }
+}
+
+/* ACESSIBILIDADE: sem animações para quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    .pagina-biblioteca .categoria,
+    .pagina-biblioteca .categoria::after {
+        transition: none;
+    }
+}

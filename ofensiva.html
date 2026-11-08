@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSaber+ | Ofensiva</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ofensiva.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav>
+            <span class="nav-logo">🎓 TechSaber+</span>
+            <span style="display:flex; gap:0.5rem;">
+                <button class="btn-primario" onclick="window.location.href = localStorage.getItem('origemOfensiva') || 'trilhas.html'">Voltar</button>
+            </span>
+        </nav>
+    </header>
+
+    <main class="ofensiva-main">
+
+        <!-- BANNER -->
+        <section class="banner-section">
+            <p class="banner-ofensiva">🔥 Sua ofensiva está on!</p>
+        </section>
+
+        <!-- CARD OFENSIVA -->
+        <section class="ofensiva-section">
+            <article class="card ofensiva-card-grande">
+                <span class="ofensiva-fogo">🔥</span>
+                <strong class="ofensiva-numero" id="dias-consecutivos">0</strong>
+                <p>DIAS CONSECUTIVOS</p>
+                <span class="ofensiva-barras">
+                    <span class="barra"></span>
+                    <span class="barra"></span>
+                    <span class="barra"></span>
+                    <span class="barra"></span>
+                    <span class="barra"></span>
+                    <span class="barra"></span>
+                    <span class="barra"></span>
+                    <span class="barra"></span>
+                </span>
+            </article>
+        </section>
+
+        <!-- BOTÕES -->
+        <section class="ofensiva-botoes">
+            <a href="biblioteca.html"><button class="btn-bloco">Cursos</button></a>
+            <a href="trilhas.html"><button class="btn-bloco">Continuar Trilha</button></a>
+        </section>
+
+    </main>
+
+    <script>
+        const dias = parseInt(localStorage.getItem("diasConsecutivos") || "0");
+        document.getElementById("dias-consecutivos").textContent = dias;
+
+        const barras = document.querySelectorAll(".ofensiva-barras .barra");
+        barras.forEach((b, i) => {
+            if (i < dias) b.classList.add("ativa");
+            else b.classList.remove("ativa");
+        });
+    </script>
+
+    <script src="js/main.js"></script>
+
+    <script src="js/assistente.js"></script>
+    
+</body>
+</html>

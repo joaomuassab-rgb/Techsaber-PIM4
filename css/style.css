@@ -1,0 +1,149 @@
+/* STYLE CSS - TechSaber+
+   Estilos globais das páginas (login, cadastro, dashboards, trilhas...)
+   Cores e fontes vêm de variables.css */
+
+/* CORPO DA PÁGINA */
+body {
+    font-family: var(--fonte-corpo);
+    background-color: var(--cor-fundo);
+    background-image: var(--fundo-nevoa);
+    background-attachment: fixed;
+    color: var(--texto-claro);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* NAVBAR EM VIDRO */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 2rem;
+    background: rgba(255, 255, 255, 0.55);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.06);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+}
+
+.nav-logo {
+    font-family: var(--fonte-titulo);
+    font-size: var(--fonte-media);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--texto-claro);
+}
+
+/* BOTÕES */
+.btn-primario,
+.btn-destaque {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1.4rem;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--fonte-corpo);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+/* Botão secundário: vidro branco com borda */
+.btn-primario {
+    color: var(--texto-claro);
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid var(--card-borda);
+}
+
+.btn-primario:hover {
+    background: #ffffff;
+    transform: translateY(-1px);
+}
+
+/* Botão principal: degradê azul */
+.btn-destaque {
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-destaque));
+    box-shadow: 0 10px 28px rgba(37, 99, 235, 0.3);
+}
+
+.btn-destaque:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(37, 99, 235, 0.4);
+}
+
+.btn-primario:focus-visible,
+.btn-destaque:focus-visible {
+    outline: 3px solid rgba(14, 165, 233, 0.45);
+    outline-offset: 3px;
+}
+
+/* CARDS EM VIDRO */
+.card {
+    background: var(--card-fundo);
+    border: 1px solid var(--card-borda);
+    border-radius: var(--borda-raio);
+    padding: var(--espaco-p);
+    box-shadow: var(--sombra-card);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 44px rgba(37, 99, 235, 0.14);
+}
+
+/* CAMPOS DE FORMULÁRIO (login e cadastro) */
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: var(--borda-raio-btn);
+    border: 1px solid var(--card-borda);
+    background: rgba(255, 255, 255, 0.9);
+    font-family: var(--fonte-corpo);
+    font-size: var(--fonte-normal);
+    color: var(--texto-claro);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--texto-suave);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: var(--fonte-pequena);
+    font-weight: 600;
+    color: var(--texto-suave);
+}
+
+/* LINKS */
+a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--cor-primaria-hover);
+}

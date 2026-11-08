@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSaber+ | Cadastro</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="stylesheet" href="css/senha.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@500;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina-login">
+
+    <!-- NAVBAR -->
+    <header class="topo">
+        <nav class="topo-nav">
+            <a href="index.html" class="logo">TechSaber+</a>
+            <div class="topo-botoes">
+                <a href="index.html" class="btn-vidro">Voltar</a>
+                <a href="login.html" class="btn-cta">Entrar</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="login-main">
+
+        <section class="form-section">
+            <div class="cadastro-wrap">
+
+                <article class="login-card cadastro-card">
+
+                    <header class="cadastro-cabecalho">
+                        <span class="cadastro-icone" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <line x1="19" y1="8" x2="19" y2="14"/>
+                                <line x1="22" y1="11" x2="16" y2="11"/>
+                            </svg>
+                        </span>
+                        <p class="eyebrow">Novo aluno</p>
+                        <h1>Crie sua conta</h1>
+                        <p class="texto-apoio">Leva menos de um minuto e você já começa a ganhar conquistas.</p>
+                    </header>
+
+                    <!-- alerta de erro -->
+                    <output class="msg-erro" id="msg-erro" role="alert" aria-live="assertive" style="display:none;"></output>
+
+                    <!-- alerta de sucesso -->
+                    <output class="msg-sucesso" id="msg-sucesso" role="status" aria-live="polite" style="display:none;">
+                        Conta criada com sucesso! Entrando...
+                    </output>
+
+                    <form id="form-cadastro" class="cadastro-form" novalidate onsubmit="event.preventDefault(); criarConta();">
+                        <fieldset>
+                            <legend class="sr-only">Dados de cadastro</legend>
+
+                            <label for="cad-nome">Nome</label>
+                            <input type="text" id="cad-nome" placeholder="digite seu nome" autocomplete="name">
+
+                            <label for="cad-email">E-mail</label>
+                            <input type="email" id="cad-email" placeholder="digite seu e-mail" autocomplete="email">
+
+                            <label for="cad-senha">Senha</label>
+                            <input type="password" id="cad-senha" placeholder="digite sua senha" autocomplete="new-password">
+                        </fieldset>
+
+                        <button type="submit" class="btn-entrar" id="btn-criar">Criar conta</button>
+                    </form>
+
+                    <footer class="cadastro-rodape">
+                        <p>Já tem conta? <a href="login.html">Entrar</a></p>
+                    </footer>
+
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/senha.js"></script>
+
+    <script>
+        /* CADASTRO - valida os campos e redireciona para o dashboard do aluno */
+        function criarConta() {
+            const nome  = document.getElementById("cad-nome").value.trim();
+            const email = document.getElementById("cad-email").value.trim();
+            const senha = document.getElementById("cad-senha").value.trim();
+            const erro    = document.getElementById("msg-erro");
+            const sucesso = document.getElementById("msg-sucesso");
+            const botao   = document.getElementById("btn-criar");
+
+            erro.style.display    = "none";
+            sucesso.style.display = "none";
+
+            /* campos vazios */
+            if (!nome || !email || !senha) {
+                erro.textContent = "Preencha todos os campos para criar sua conta.";
+                erro.style.display = "block";
+                return;
+            }
+
+            /* formato de e-mail */
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                erro.textContent = "Digite um e-mail válido.";
+                erro.style.display = "block";
+                return;
+            }
+
+            /* sucesso e redirecionamento */
+            sucesso.style.display = "block";
+            botao.disabled = true;
+            localStorage.setItem("primeiroAcesso", "true");
+            setTimeout(() => {
+                window.location.href = "dashboard-aluno.html";
+            }, 1000);
+        }
+    </script>
+
+<script src="js/assistente.js"></script>
+
+</body>
+</html>

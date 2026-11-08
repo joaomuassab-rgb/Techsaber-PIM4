@@ -1,0 +1,499 @@
+/* CURSO.CSS - TechSaber+ (trilha de cada curso)
+   Linha do tempo em zigue-zague, cards de vidro e nós com status.
+   Tudo fica dentro de .pagina-curso. */
+
+.pagina-curso svg {
+    display: block;
+    max-width: 100%;
+    flex-shrink: 0;
+}
+
+.pagina-curso {
+    --azul: #2563eb;
+    --azul-vivo: #0ea5e9;
+    --ciano: #22d3ee;
+    --cinza-900: #0f172a;
+    --cinza-700: #334155;
+    --cinza-500: #64748b;
+
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--cinza-900);
+    position: relative;
+    overflow-x: hidden;
+    background:
+        radial-gradient(60% 40% at 15% 0%, rgba(56, 189, 248, 0.35), transparent 70%),
+        radial-gradient(50% 40% at 90% 10%, rgba(37, 99, 235, 0.22), transparent 70%),
+        radial-gradient(60% 50% at 50% 100%, rgba(186, 230, 253, 0.6), transparent 70%),
+        linear-gradient(180deg, #ffffff 0%, #f1f5f9 50%, #e2e8f0 100%);
+}
+
+/* Aurora suave atrás do conteúdo */
+.pagina-curso::before {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    width: 120%;
+    height: 60%;
+    top: -10%;
+    left: -10%;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 200deg at 50% 50%,
+        rgba(34, 211, 238, 0.4),
+        rgba(37, 99, 235, 0.3),
+        rgba(186, 230, 253, 0.55),
+        rgba(56, 189, 248, 0.4),
+        rgba(34, 211, 238, 0.4)
+    );
+    filter: blur(90px);
+    opacity: 0.75;
+    animation: respiroCurso 12s ease-in-out infinite alternate;
+}
+
+@keyframes respiroCurso {
+    from { transform: translateY(0) scale(1); }
+    to   { transform: translateY(-3%) scale(1.06); }
+}
+
+@keyframes entradaCurso {
+    from { opacity: 0; transform: translateY(18px); filter: blur(6px); }
+    to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes pulsoNo {
+    0%   { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.5); }
+    100% { box-shadow: 0 0 0 16px rgba(14, 165, 233, 0); }
+}
+
+/* NAVBAR FLUTUANTE */
+.pagina-curso .topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 1rem 1.5rem;
+}
+
+.pagina-curso .topo-nav {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 0.6rem 0.6rem 1.25rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.08);
+}
+
+.pagina-curso .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    color: var(--cinza-900);
+    text-decoration: none;
+}
+
+.pagina-curso .btn-voltar-pagina {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 1.3rem;
+    border: 2px solid var(--azul);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--azul);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.pagina-curso .btn-voltar-pagina:hover {
+    background: var(--azul);
+    color: #ffffff;
+    transform: scale(1.04);
+}
+
+.pagina-curso .btn-voltar-pagina:focus-visible,
+.pagina-curso .btn-cta:focus-visible,
+.pagina-curso .btn-vidro:focus-visible {
+    outline: 3px solid var(--ciano);
+    outline-offset: 3px;
+}
+
+/* ÁREA PRINCIPAL */
+.pagina-curso .curso-main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 8rem 1.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    animation: entradaCurso 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.pagina-curso .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cinza-500);
+    margin: 0 0 0.6rem;
+}
+
+.pagina-curso .curso-cabecalho {
+    text-align: center;
+}
+
+.pagina-curso .curso-cabecalho h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--cinza-900);
+    margin: 0;
+}
+
+.pagina-curso .destaque {
+    background: linear-gradient(90deg, #2563eb, #22d3ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* TRILHA: linha central e itens em grade de 3 colunas */
+.pagina-curso .trilha-vertical {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.pagina-curso .trilha-vertical::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    bottom: 30px;
+    left: 50%;
+    width: 3px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: linear-gradient(to bottom, #2563eb, #22d3ee, #cbd5e1);
+    z-index: 0;
+}
+
+.pagina-curso .atividade-item {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 64px 1fr;
+    align-items: center;
+    padding: 0.9rem 0;
+}
+
+/* Cartão do lado esquerdo e direito */
+.pagina-curso .atividade-item.esquerda .atividade-conteudo {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: end;
+}
+
+.pagina-curso .atividade-item.direita .atividade-conteudo {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: start;
+}
+
+.pagina-curso .atividade-ponto {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+}
+
+.pagina-curso .vazio {
+    display: none;
+}
+
+/* NÓ DA TRILHA */
+.pagina-curso .atividade-ponto {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    color: #94a3b8;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.pagina-curso .atividade-ponto svg {
+    width: 22px;
+    height: 22px;
+}
+
+.pagina-curso .atividade-item.concluida .atividade-ponto {
+    background: linear-gradient(135deg, #2563eb, #0ea5e9);
+    border-color: transparent;
+    color: #ffffff;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+}
+
+.pagina-curso .atividade-item.andamento .atividade-ponto {
+    width: 62px;
+    height: 62px;
+    background: #ffffff;
+    border-color: #0ea5e9;
+    color: #0ea5e9;
+    animation: pulsoNo 2s ease-out infinite;
+}
+
+.pagina-curso .atividade-item.andamento .atividade-ponto svg {
+    width: 26px;
+    height: 26px;
+}
+
+.pagina-curso .atividade-item.bloqueada .atividade-ponto {
+    opacity: 0.6;
+}
+
+/* CARTÃO DE VIDRO */
+.pagina-curso .atividade-conteudo {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.4rem 1.5rem;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.4s ease, background 0.4s ease;
+}
+
+.pagina-curso .atividade-conteudo:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 24px 52px rgba(37, 99, 235, 0.16);
+}
+
+.pagina-curso .atividade-conteudo h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--cinza-900);
+    margin: 0.4rem 0 0;
+}
+
+.pagina-curso .atividade-conteudo p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--cinza-500);
+    margin: 0;
+}
+
+/* Cartão em andamento: borda azul com brilho */
+.pagina-curso .andamento-card {
+    border: 2px solid #0ea5e9;
+    box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.2), 0 20px 48px rgba(14, 165, 233, 0.22);
+}
+
+/* Cartão bloqueado: esmaecido */
+.pagina-curso .bloqueado-card {
+    opacity: 0.6;
+    filter: saturate(0.4);
+}
+
+.pagina-curso .bloqueado-card:hover {
+    transform: none;
+}
+
+.pagina-curso .aviso-bloqueado {
+    margin-top: 0.4rem !important;
+    font-size: 0.82rem !important;
+    font-weight: 600;
+    color: var(--cinza-500) !important;
+}
+
+/* CHIPS DE STATUS */
+.pagina-curso .chip {
+    align-self: flex-start;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.pagina-curso .chip--andamento {
+    background: linear-gradient(135deg, #2563eb, #0ea5e9);
+    color: #ffffff;
+}
+
+.pagina-curso .chip--concluida {
+    background: rgba(37, 99, 235, 0.1);
+    color: #1d4ed8;
+    border: 1px solid rgba(37, 99, 235, 0.25);
+}
+
+/* BOTÕES DENTRO DOS CARTÕES */
+.pagina-curso .btn-cta,
+.pagina-curso .btn-vidro {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.6rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 14px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.pagina-curso .btn-cta {
+    border: none;
+    background: linear-gradient(135deg, #2563eb, #0ea5e9);
+    color: #ffffff;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+}
+
+.pagina-curso .btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(37, 99, 235, 0.45);
+}
+
+.pagina-curso .btn-vidro {
+    border: 2px solid #2563eb;
+    background: rgba(255, 255, 255, 0.85);
+    color: #2563eb;
+}
+
+.pagina-curso .btn-vidro:hover {
+    background: #2563eb;
+    color: #ffffff;
+    transform: scale(1.04);
+}
+
+/* TROFÉU DE MÓDULO CONCLUÍDO */
+.pagina-curso .modulo-concluido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 24px 60px rgba(37, 99, 235, 0.14);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.pagina-curso .modulo-icone {
+    display: grid;
+    place-items: center;
+    width: 76px;
+    height: 76px;
+    margin-bottom: 0.6rem;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+    color: #ffffff;
+    box-shadow: 0 14px 30px rgba(245, 158, 11, 0.35);
+}
+
+.pagina-curso .modulo-icone svg {
+    width: 38px;
+    height: 38px;
+}
+
+.pagina-curso .modulo-concluido h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--cinza-900);
+    margin: 0;
+}
+
+.pagina-curso .modulo-concluido p {
+    color: var(--cinza-500);
+    margin: 0;
+}
+
+/* RESPONSIVO: no celular a trilha vira uma coluna, com a linha à esquerda */
+@media (max-width: 700px) {
+    .pagina-curso .curso-main {
+        padding: 7.5rem 1rem 3rem;
+    }
+
+    .pagina-curso .trilha-vertical::before {
+        left: 26px;
+        transform: none;
+    }
+
+    .pagina-curso .atividade-item {
+        grid-template-columns: 52px 1fr;
+        padding: 0.7rem 0;
+    }
+
+    .pagina-curso .atividade-ponto {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: start;
+        width: 52px;
+        height: 52px;
+    }
+
+    .pagina-curso .atividade-item.andamento .atividade-ponto {
+        width: 58px;
+        height: 58px;
+    }
+
+    .pagina-curso .atividade-item.esquerda .atividade-conteudo,
+    .pagina-curso .atividade-item.direita .atividade-conteudo {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: stretch;
+        max-width: none;
+        margin-left: 0.4rem;
+    }
+
+    .pagina-curso .vazio {
+        display: none;
+    }
+}
+
+/* ACESSIBILIDADE: sem movimento para quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+    .pagina-curso::before,
+    .pagina-curso .curso-main,
+    .pagina-curso .atividade-item.andamento .atividade-ponto {
+        animation: none;
+    }
+
+    .pagina-curso .atividade-conteudo,
+    .pagina-curso .atividade-ponto,
+    .pagina-curso .btn-cta,
+    .pagina-curso .btn-vidro {
+        transition: none;
+    }
+}

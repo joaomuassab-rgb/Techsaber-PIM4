@@ -1,0 +1,298 @@
+/* DASHBOARD-ALUNO.CSS - TechSaber+ (painel do aluno)
+   Cards de vidro azulado com ícones em degradê e animação ao passar o mouse.
+   Tudo fica dentro de .pagina-aluno. */
+
+/* Trava o tamanho dos SVG da página, para nenhum ícone ocupar a tela */
+.pagina-aluno svg {
+    display: block;
+    max-width: 100%;
+    flex-shrink: 0;
+}
+
+.pagina-aluno {
+    --azul: #2563eb;
+    --azul-vivo: #0ea5e9;
+    --ciano: #22d3ee;
+    --cinza-900: #0f172a;
+    --cinza-500: #64748b;
+
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--cinza-900);
+    position: relative;
+    overflow-x: hidden;
+    background:
+        radial-gradient(60% 40% at 15% 0%, rgba(56, 189, 248, 0.35), transparent 70%),
+        radial-gradient(50% 40% at 90% 10%, rgba(37, 99, 235, 0.22), transparent 70%),
+        radial-gradient(60% 50% at 50% 100%, rgba(186, 230, 253, 0.6), transparent 70%),
+        linear-gradient(180deg, #ffffff 0%, #f1f5f9 50%, #e2e8f0 100%);
+}
+
+/* Aurora suave atrás do conteúdo */
+.pagina-aluno::before {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    width: 120%;
+    height: 60%;
+    top: -10%;
+    left: -10%;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 200deg at 50% 50%,
+        rgba(34, 211, 238, 0.4),
+        rgba(37, 99, 235, 0.3),
+        rgba(186, 230, 253, 0.55),
+        rgba(56, 189, 248, 0.4),
+        rgba(34, 211, 238, 0.4)
+    );
+    filter: blur(90px);
+    opacity: 0.75;
+    animation: respiroAluno 12s ease-in-out infinite alternate;
+}
+
+@keyframes respiroAluno {
+    from { transform: translateY(0) scale(1); }
+    to   { transform: translateY(-3%) scale(1.06); }
+}
+
+@keyframes entradaAluno {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); filter: blur(6px); }
+    to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+/* NAVBAR FLUTUANTE */
+.pagina-aluno .topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 1rem 1.5rem;
+}
+
+.pagina-aluno .topo-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.6rem 0.6rem 1.25rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.08);
+}
+
+.pagina-aluno .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--cinza-900);
+    text-decoration: none;
+}
+
+.pagina-aluno .topo-botoes {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.pagina-aluno .btn-sair-pagina {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.35rem;
+    border: 2px solid var(--azul);
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--azul), var(--azul-vivo));
+    color: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    box-shadow: 0 8px 22px rgba(37, 99, 235, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pagina-aluno .btn-sair-pagina:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.45);
+}
+
+.pagina-aluno .btn-sair-pagina:focus-visible {
+    outline: 3px solid var(--ciano);
+    outline-offset: 3px;
+}
+
+/* ÁREA PRINCIPAL */
+.pagina-aluno .aluno-main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 1.5rem 4rem;
+    text-align: center;
+    animation: entradaAluno 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.pagina-aluno .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cinza-500);
+    margin: 0 0 1rem;
+}
+
+.pagina-aluno .aluno-cabecalho h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4.5vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--cinza-900);
+    margin: 0;
+}
+
+.pagina-aluno .aluno-subtitulo {
+    margin: 0.9rem 0 0;
+    color: var(--cinza-500);
+    font-size: 1rem;
+}
+
+/* CARDS: três colunas no computador, uma coluna no celular */
+.pagina-aluno .aluno-cards {
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.pagina-aluno .aluno-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    min-width: 0;
+    padding: 2rem 1.75rem 1.75rem;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    text-align: left;
+    text-decoration: none;
+    color: var(--cinza-900);
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+}
+
+/* Ícone em degradê, com cor própria em cada card */
+.pagina-aluno .aluno-icone {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    margin-bottom: 0.9rem;
+    border-radius: 18px;
+    color: #ffffff;
+    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.3);
+}
+
+.pagina-aluno .aluno-icone svg {
+    width: 28px;
+    height: 28px;
+}
+
+.pagina-aluno .aluno-card--biblioteca .aluno-icone {
+    background: linear-gradient(135deg, #38bdf8, #2563eb);
+}
+
+.pagina-aluno .aluno-card--trilhas .aluno-icone {
+    background: linear-gradient(135deg, #0ea5e9, #1e3a8a);
+}
+
+.pagina-aluno .aluno-card--perfil .aluno-icone {
+    background: linear-gradient(135deg, #22d3ee, #0f172a);
+}
+
+.pagina-aluno .aluno-card h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--cinza-900);
+    margin: 0;
+}
+
+.pagina-aluno .aluno-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--cinza-500);
+}
+
+.pagina-aluno .aluno-acesso {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--azul);
+}
+
+.pagina-aluno .aluno-acesso svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Efeito ao passar o mouse: o card sobe e ganha brilho */
+.pagina-aluno .aluno-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(37, 99, 235, 0.35);
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2), 0 30px 60px rgba(37, 99, 235, 0.2);
+}
+
+.pagina-aluno .aluno-card:hover .aluno-acesso svg {
+    transform: translateX(6px);
+}
+
+.pagina-aluno .aluno-card:focus-visible {
+    outline: 3px solid var(--ciano);
+    outline-offset: 4px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 860px) {
+    .pagina-aluno .aluno-cards {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+    }
+}
+
+/* ACESSIBILIDADE: sem movimento para quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+    .pagina-aluno::before,
+    .pagina-aluno .aluno-main {
+        animation: none;
+    }
+
+    .pagina-aluno .aluno-card,
+    .pagina-aluno .aluno-acesso svg,
+    .pagina-aluno .btn-sair-pagina {
+        transition: none;
+    }
+}

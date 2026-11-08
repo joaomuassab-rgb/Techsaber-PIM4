@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSaber+ | Login</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@500;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina-login">
+
+    <!-- NAVBAR -->
+    <header class="topo">
+        <nav class="topo-nav">
+            <a href="index.html" class="logo">TechSaber+</a>
+            <div class="topo-botoes">
+                <a href="index.html" class="btn-vidro">Voltar</a>
+                <a href="cadastro.html" class="btn-cta">Cadastrar</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="login-main">
+
+        <!-- TELA 1: ESCOLHA DE PERFIL -->
+        <section class="perfil-section" id="tela-perfil">
+            <p class="eyebrow">Acesso</p>
+            <h1>Como você vai usar a <span class="destaque">TechSaber+</span>?</h1>
+            <p class="subtitulo">Escolha seu perfil para continuar</p>
+
+            <div class="perfil-lista">
+
+                <button class="perfil-card perfil-card--aluno" onclick="escolherPerfil('aluno')">
+                    <span class="perfil-icone" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10 12 5 2 10l10 5 10-5z"/>
+                            <path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/>
+                        </svg>
+                    </span>
+                    <span class="perfil-texto">
+                        <strong>Sou aluno</strong>
+                        <small>Acesse cursos, trilhas e conquistas</small>
+                    </span>
+                    <span class="perfil-seta" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+                        </svg>
+                    </span>
+                </button>
+
+                <button class="perfil-card perfil-card--professor" onclick="escolherPerfil('professor')">
+                    <span class="perfil-icone" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                    </span>
+                    <span class="perfil-texto">
+                        <strong>Sou professor</strong>
+                        <small>Gerencie turmas, atividades e relatórios</small>
+                    </span>
+                    <span class="perfil-seta" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+                        </svg>
+                    </span>
+                </button>
+
+                <button class="perfil-card perfil-card--admin" onclick="escolherPerfil('admin')">
+                    <span class="perfil-icone" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </span>
+                    <span class="perfil-texto">
+                        <strong>Sou administrador</strong>
+                        <small>Acesse o painel completo da plataforma</small>
+                    </span>
+                    <span class="perfil-seta" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+                        </svg>
+                    </span>
+                </button>
+
+            </div>
+        </section>
+
+        <!-- TELA 2: FORMULÁRIO DE LOGIN -->
+        <section class="form-section" id="tela-login" style="display:none;" aria-label="Formulário de login">
+
+            <article class="login-card">
+                <p class="eyebrow">Entrar</p>
+                <h2>Acesse sua conta</h2>
+
+                <output class="msg-erro" id="msg-erro" style="display:none;" role="alert" aria-live="assertive">
+                    Email ou senha incorretos. Verifique os dados e tente novamente.
+                </output>
+
+                <output class="msg-sucesso" id="msg-sucesso" style="display:none;" role="status" aria-live="polite">
+                    Login concluído com sucesso!
+                </output>
+
+                <fieldset>
+                    <legend class="sr-only">Credenciais de acesso</legend>
+
+                    <label for="login-email">Login</label>
+                    <input type="text" id="login-email" placeholder="digite seu e-mail ou CPF" autocomplete="username">
+
+                    <label for="login-senha">Senha</label>
+                    <input type="password" id="login-senha" placeholder="digite sua senha" autocomplete="current-password">
+                </fieldset>
+
+                <button class="btn-entrar" onclick="fazerLogin()">Entrar</button>
+
+                <footer class="login-rodape">
+                      <a href="esqueci-senha.html">Esqueci minha senha</a>
+                </footer>
+
+                <button class="btn-voltar-perfil" onclick="voltarPerfil()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="m15 18-6-6 6-6"/>
+                    </svg>
+                    Voltar para perfis
+                </button>
+            </article>
+
+        </section>
+
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/login.js"></script>
+
+    <script src="js/assistente.js"></script>
+    
+</body>
+</html>

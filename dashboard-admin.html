@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSaber+ | Painel do Administrador</title>
+
+    <link rel="stylesheet" href="css/dashboard-admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@500;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina-admin">
+
+    <!-- NAVBAR -->
+    <header class="topo">
+        <nav class="topo-nav">
+            <a href="dashboard-admin.html" class="logo">TechSaber+</a>
+            <div class="topo-direita">
+                <span class="saudacao">Bem-vindo, <strong>Administrador</strong></span>
+                <a href="login.html" class="btn-voltar-pagina">Voltar</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ABAS -->
+    <nav class="abas" aria-label="Seções do painel">
+        <button class="aba-btn" data-tab="aba-visao-geral" aria-selected="true">Visão Geral</button>
+        <button class="aba-btn" data-tab="aba-professores" aria-selected="false">Professores</button>
+        <button class="aba-btn" data-tab="aba-alunos" aria-selected="false">Alunos</button>
+    </nav>
+
+    <main class="admin-main">
+
+        <!-- ABA 1: VISÃO GERAL -->
+        <section id="aba-visao-geral" class="aba-painel active" aria-labelledby="titulo-visao-geral">
+
+            <header class="admin-cabecalho">
+                <p class="eyebrow">Painel do administrador</p>
+                <h1 id="titulo-visao-geral">Visão geral</h1>
+            </header>
+
+            <div class="stats-grid">
+                <article class="stat-card">
+                    <span class="stat-card__icone stat-card__icone--azul" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </span>
+                    <span class="stat-card__rotulo">Alunos</span>
+                    <strong class="stat-card__valor">45</strong>
+                </article>
+
+                <article class="stat-card">
+                    <span class="stat-card__icone stat-card__icone--ciano" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                    </span>
+                    <span class="stat-card__rotulo">Professores</span>
+                    <strong class="stat-card__valor">12</strong>
+                </article>
+            </div>
+
+            <section class="graficos" aria-labelledby="titulo-graficos">
+                <h2 id="titulo-graficos" class="secao-titulo">Desempenho por turma</h2>
+
+                <div class="graficos-grid">
+
+                    <article class="grafico-card">
+                        <h3 class="grafico-card__titulo">Frequência geral</h3>
+                        <ul class="barras">
+                            <li>
+                                <div class="barra-rotulo"><span>Turma A</span><output>82%</output></div>
+                                <div class="barra"><span class="barra__preench barra__preench--azul" data-valor="82"></span></div>
+                            </li>
+                            <li>
+                                <div class="barra-rotulo"><span>Turma B</span><output>67%</output></div>
+                                <div class="barra"><span class="barra__preench barra__preench--azul" data-valor="67"></span></div>
+                            </li>
+                            <li>
+                                <div class="barra-rotulo"><span>Turma C</span><output>74%</output></div>
+                                <div class="barra"><span class="barra__preench barra__preench--azul" data-valor="74"></span></div>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="grafico-card">
+                        <h3 class="grafico-card__titulo">Desempenho geral</h3>
+                        <ul class="barras">
+                            <li>
+                                <div class="barra-rotulo"><span>Turma A</span><output>90%</output></div>
+                                <div class="barra"><span class="barra__preench barra__preench--rosa" data-valor="90"></span></div>
+                            </li>
+                            <li>
+                                <div class="barra-rotulo"><span>Turma B</span><output>55%</output></div>
+                                <div class="barra"><span class="barra__preench barra__preench--rosa" data-valor="55"></span></div>
+                            </li>
+                            <li>
+                                <div class="barra-rotulo"><span>Turma C</span><output>78%</output></div>
+                                <div class="barra"><span class="barra__preench barra__preench--rosa" data-valor="78"></span></div>
+                            </li>
+                        </ul>
+                    </article>
+
+                </div>
+            </section>
+
+        </section>
+
+
+        <!-- ABA 2: PROFESSORES -->
+        <section id="aba-professores" class="aba-painel" aria-labelledby="titulo-professores">
+
+            <header class="cabecalho-tabela">
+                <div>
+                    <p class="eyebrow">Gerenciar</p>
+                    <h1 id="titulo-professores">Professores</h1>
+                </div>
+                <button class="btn-primario btn-adicionar" data-tipo="professor">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+                        <line x1="12" y1="5" x2="12" y2="19"/>
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
+                    Adicionar
+                </button>
+            </header>
+
+            <div class="tabela-wrap" role="region" aria-label="Lista de professores" tabindex="0">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Disciplina</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ana Lima</td>
+                            <td>Engenharia de Software</td>
+                            <td><span class="status status--ativo">Ativo</span></td>
+                            <td class="acoes">
+                                <button class="btn-acao btn-acao--editar">Editar</button>
+                                <button class="btn-acao btn-acao--remover">Remover</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Carlos Mendes</td>
+                            <td>Banco de Dados</td>
+                            <td><span class="status status--ativo">Ativo</span></td>
+                            <td class="acoes">
+                                <button class="btn-acao btn-acao--editar">Editar</button>
+                                <button class="btn-acao btn-acao--remover">Remover</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fernanda Costa</td>
+                            <td>Acessibilidade</td>
+                            <td><span class="status status--inativo">Inativo</span></td>
+                            <td class="acoes">
+                                <button class="btn-acao btn-acao--editar">Editar</button>
+                                <button class="btn-acao btn-acao--remover">Remover</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ricardo Souza</td>
+                            <td>Soft Skills</td>
+                            <td><span class="status status--ativo">Ativo</span></td>
+                            <td class="acoes">
+                                <button class="btn-acao btn-acao--editar">Editar</button>
+                                <button class="btn-acao btn-acao--remover">Remover</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Juliana Rocha</td>
+                            <td>Front-end</td>
+                            <td><span class="status status--ativo">Ativo</span></td>
+                            <td class="acoes">
+                                <button class="btn-acao btn-acao--editar">Editar</button>
+                                <button class="btn-acao btn-acao--remover">Remover</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Paulo Neves</td>
+                            <td>Back-end</td>
+                            <td><span class="status status--inativo">Inativo</span></td>
+                            <td class="acoes">
+                                <button class="btn-acao btn-acao--editar">Editar</button>
+                                <button class="btn-acao btn-acao--remover">Remover</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+
+        <!-- ABA 3: ALUNOS -->
+        <section id="aba-alunos" class="aba-painel" aria-labelledby="titulo-alunos">
+
+            <header class="cabecalho-tabela">
+                <div>
+                    <p class="eyebrow">Gerenciar</p>
+                    <h1 id="titulo-alunos">Alunos</h1>
+                </div>
+                <button class="btn-primario btn-adicionar" data-tipo="aluno">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+                        <line x1="12" y1="5" x2="12" y2="19"/>
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
+                    Adicionar
+                </button>
+            </header>
+
+            <div class="tabela-wrap" role="region" aria-label="Lista de alunos" tabindex="0">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Curso</th>
+                            <th scope="col">Módulo</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bruno Alves</td>
+                            <td>Eng. de Software</td>
+                            <td>Módulo 03</td>
+                            <td><span class="status status--ativo">Ativo</span></td>
+                            <td class="acoes">
+                                <button class="btn-acao btn-acao--editar">Editar</button>
+                                <button class="btn-acao btn-acao--remover">Remover</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Camila Torres</td>
+                            <td>Front-end</td>
+                            <td>Módulo 01</td>
+                            <td><span class="status status--ativo">Ativo</span></td>
+                            <td class="acoes">
+                                <button class="btn-acao btn-acao--editar">Editar</button>
+                                <button class="btn-acao btn-acao--remover">Remover</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Diego Martins</td>
+                            <td>Banco de Dados</td>
+                            <td>Módulo 02</td>
+                            <td><span class="status status--inativo">Inativo</span></td>
+                            <td class="acoes">
+                                <button class="btn-acao btn-acao--editar">Editar</button>
+                                <button class="btn-acao btn-acao--remover">Remover</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Eloá Ferreira</td>
+                            <td>Acessibilidade (Libras)</td>
+                            <td>Módulo 04</td>
+                            <td><span class="status status--ativo">Ativo</span></td>
+                            <td class="acoes">
+                                <button class="btn-acao btn-acao--editar">Editar</button>
+                                <button class="btn-acao btn-acao--remover">Remover</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Felipe Castro</td>
+                            <td>Back-end</td>
+                            <td>Módulo 01</td>
+                            <td><span class="status status--ativo">Ativo</span></td>
+                            <td class="acoes">
+                                <button class="btn-acao btn-acao--editar">Editar</button>
+                                <button class="btn-acao btn-acao--remover">Remover</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gabriela Carvalho</td>
+                            <td>Soft Skills</td>
+                            <td>Módulo 02</td>
+                            <td><span class="status status--inativo">Inativo</span></td>
+                            <td class="acoes">
+                                <button class="btn-acao btn-acao--editar">Editar</button>
+                                <button class="btn-acao btn-acao--remover">Remover</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MODAL: EDITAR USUÁRIO -->
+    <dialog id="modal-editar" class="modal" aria-labelledby="modal-editar-titulo">
+        <h2 id="modal-editar-titulo" class="modal__titulo">Editar usuário</h2>
+
+        <form id="form-editar" method="dialog">
+            <div class="campo">
+                <label for="edit-nome">Nome</label>
+                <input id="edit-nome" type="text" required>
+            </div>
+
+            <div class="campo">
+                <label for="edit-perfil">Perfil</label>
+                <select id="edit-perfil">
+                    <option value="aluno">Aluno</option>
+                    <option value="professor">Professor</option>
+                    <option value="administrador">Administrador</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="edit-status">Status</label>
+                <select id="edit-status">
+                    <option value="ativo">Ativo</option>
+                    <option value="inativo">Inativo</option>
+                </select>
+            </div>
+
+            <footer class="modal__acoes">
+                <button type="button" class="btn-fantasma" id="btn-cancelar-edicao">Cancelar</button>
+                <button type="submit" class="btn-primario">Salvar</button>
+            </footer>
+        </form>
+    </dialog>
+
+    <script src="js/modal.js"></script>
+    <script src="js/dashboard-admin.js"></script>
+
+</body>
+</html>

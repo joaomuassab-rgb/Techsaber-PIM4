@@ -1,0 +1,502 @@
+/* LOGIN.CSS - TechSaber+ (escolha de perfil e formulário)
+   Visual em aurora com cards de vidro. Tudo fica dentro de .pagina-login. */
+
+.pagina-login {
+    --azul: #2563eb;
+    --azul-vivo: #0ea5e9;
+    --ciano: #22d3ee;
+    --cinza-900: #0f172a;
+    --cinza-700: #334155;
+    --cinza-500: #64748b;
+
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--cinza-900);
+    background:
+        radial-gradient(60% 40% at 15% 0%, rgba(56, 189, 248, 0.35), transparent 70%),
+        radial-gradient(50% 40% at 90% 10%, rgba(37, 99, 235, 0.22), transparent 70%),
+        radial-gradient(60% 50% at 50% 100%, rgba(186, 230, 253, 0.6), transparent 70%),
+        linear-gradient(180deg, #ffffff 0%, #f1f5f9 50%, #e2e8f0 100%);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Aurora suave atrás do conteúdo */
+.pagina-login::before {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    width: 120%;
+    height: 60%;
+    top: -10%;
+    left: -10%;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 200deg at 50% 50%,
+        rgba(34, 211, 238, 0.4),
+        rgba(37, 99, 235, 0.3),
+        rgba(186, 230, 253, 0.55),
+        rgba(56, 189, 248, 0.4),
+        rgba(34, 211, 238, 0.4)
+    );
+    filter: blur(90px);
+    opacity: 0.75;
+    animation: respiroLogin 12s ease-in-out infinite alternate;
+}
+
+@keyframes respiroLogin {
+    from { transform: translateY(0) scale(1); }
+    to   { transform: translateY(-3%) scale(1.06); }
+}
+
+@keyframes entradaLogin {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); filter: blur(6px); }
+    to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+/* NAVBAR FLUTUANTE */
+.pagina-login .topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 1rem 1.5rem;
+}
+
+.pagina-login .topo-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.6rem 0.6rem 1.25rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.08);
+}
+
+.pagina-login .logo {
+    font-family: 'Orbitron', 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--cinza-900);
+    text-decoration: none;
+}
+
+.pagina-login .topo-botoes {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.pagina-login .btn-vidro,
+.pagina-login .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    padding: 0.65rem 1.35rem;
+    border: 2px solid var(--azul);
+    border-radius: 14px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.pagina-login .btn-vidro {
+    color: var(--azul);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.pagina-login .btn-vidro:hover {
+    background: var(--azul);
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.pagina-login .btn-cta {
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--azul), var(--azul-vivo));
+    box-shadow: 0 10px 26px rgba(37, 99, 235, 0.35);
+}
+
+.pagina-login .btn-cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 14px 34px rgba(37, 99, 235, 0.45);
+}
+
+/* ÁREA CENTRAL */
+.pagina-login .login-main {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 1.5rem 4rem;
+}
+
+.pagina-login .perfil-section,
+.pagina-login .form-section {
+    width: 100%;
+    max-width: 640px;
+    text-align: center;
+    animation: entradaLogin 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* A tela de formulário usa flex só quando o JS a exibe */
+.pagina-login .form-section[style*="flex"] {
+    display: flex !important;
+    justify-content: center;
+}
+
+.pagina-login .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cinza-500);
+    margin: 0 0 1.25rem;
+}
+
+.pagina-login h1,
+.pagina-login h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--cinza-900);
+    margin: 0;
+}
+
+.pagina-login .destaque {
+    background: linear-gradient(90deg, #2563eb, #22d3ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.pagina-login .subtitulo {
+    margin: 1rem 0 2.5rem;
+    color: var(--cinza-500);
+    font-size: 1rem;
+}
+
+/* CARDS DE PERFIL */
+.pagina-login .perfil-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.pagina-login .perfil-card {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    align-items: center;
+    gap: 1.25rem;
+    width: 100%;
+    padding: 1.1rem 1.4rem;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.07);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    font: inherit;
+    text-align: left;
+    color: var(--cinza-900);
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+.pagina-login .perfil-card--aluno {
+    --icone-a: #38bdf8;
+    --icone-b: #2563eb;
+}
+
+.pagina-login .perfil-card--professor {
+    --icone-a: #2563eb;
+    --icone-b: #1e3a8a;
+}
+
+.pagina-login .perfil-card--admin {
+    --icone-a: #0ea5e9;
+    --icone-b: #0f172a;
+}
+
+.pagina-login .perfil-icone {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, var(--icone-a), var(--icone-b));
+    color: #ffffff;
+    box-shadow: 0 10px 22px rgba(37, 99, 235, 0.3);
+}
+
+.pagina-login .perfil-icone svg {
+    width: 28px;
+    height: 28px;
+}
+
+.pagina-login .perfil-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.pagina-login .perfil-texto strong {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--cinza-900);
+}
+
+.pagina-login .perfil-texto small {
+    font-size: 0.9rem;
+    color: var(--cinza-500);
+    line-height: 1.5;
+}
+
+.pagina-login .perfil-seta {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    color: var(--azul);
+    transition: transform 0.35s ease, background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+}
+
+.pagina-login .perfil-seta svg {
+    width: 18px;
+    height: 18px;
+}
+
+.pagina-login .perfil-card:hover {
+    transform: scale(1.02) translateY(-2px);
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(37, 99, 235, 0.35);
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2), 0 22px 50px rgba(37, 99, 235, 0.18);
+}
+
+.pagina-login .perfil-card:hover .perfil-seta {
+    background: var(--azul);
+    border-color: var(--azul);
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+.pagina-login .perfil-card:focus-visible {
+    outline: 3px solid var(--ciano);
+    outline-offset: 4px;
+}
+
+/* FORMULÁRIO DE LOGIN */
+.pagina-login .login-card {
+    max-width: 440px;
+    margin: 0 auto;
+    padding: 2.5rem 2.25rem 2rem;
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 24px 60px rgba(37, 99, 235, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    text-align: left;
+}
+
+.pagina-login .login-card .eyebrow {
+    text-align: left;
+}
+
+.pagina-login .login-card h2 {
+    margin-bottom: 1.75rem;
+}
+
+.pagina-login fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.pagina-login .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+.pagina-login label {
+    display: block;
+    margin: 0 0 0.45rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--cinza-700);
+}
+
+.pagina-login input {
+    width: 100%;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.25rem;
+    border-radius: 14px;
+    border: 1px solid rgba(37, 99, 235, 0.22);
+    background: rgba(255, 255, 255, 0.85);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.98rem;
+    color: var(--cinza-900);
+    box-sizing: border-box;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pagina-login input::placeholder {
+    color: #94a3b8;
+}
+
+.pagina-login input:focus {
+    outline: none;
+    border-color: var(--azul);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.pagina-login .msg-erro,
+.pagina-login .msg-sucesso {
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.25rem;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.pagina-login .msg-erro {
+    display: block;
+    background: rgba(254, 226, 226, 0.85);
+    border: 1px solid rgba(248, 113, 113, 0.5);
+    color: #991b1b;
+}
+
+.pagina-login .msg-sucesso {
+    display: block;
+    background: rgba(220, 252, 231, 0.85);
+    border: 1px solid rgba(74, 222, 128, 0.5);
+    color: #166534;
+}
+
+.pagina-login .btn-entrar {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--azul), var(--azul-vivo));
+    color: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pagina-login .btn-entrar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 38px rgba(37, 99, 235, 0.45);
+}
+
+.pagina-login .login-rodape {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.pagina-login .login-rodape a {
+    color: var(--azul);
+    text-decoration: none;
+}
+
+.pagina-login .login-rodape a:hover {
+    text-decoration: underline;
+}
+
+.pagina-login .btn-voltar-perfil {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 1.5rem auto 0;
+    padding: 0.5rem 0.9rem;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--cinza-500);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.pagina-login .btn-voltar-perfil svg {
+    width: 16px;
+    height: 16px;
+}
+
+.pagina-login .btn-voltar-perfil:hover {
+    color: var(--azul);
+    background: rgba(37, 99, 235, 0.08);
+}
+
+/* RESPONSIVO */
+@media (max-width: 560px) {
+    .pagina-login .topo-botoes .btn-vidro {
+        display: none;
+    }
+
+    .pagina-login .perfil-card {
+        grid-template-columns: 50px 1fr auto;
+        gap: 0.9rem;
+        padding: 1rem;
+    }
+
+    .pagina-login .perfil-icone {
+        width: 50px;
+        height: 50px;
+        border-radius: 15px;
+    }
+
+    .pagina-login .perfil-texto strong {
+        font-size: 1.02rem;
+    }
+
+    .pagina-login .perfil-texto small {
+        font-size: 0.84rem;
+    }
+
+    .pagina-login .login-card {
+        padding: 2rem 1.4rem 1.6rem;
+    }
+}
+
+/* ACESSIBILIDADE: sem animações para quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    .pagina-login::before,
+    .pagina-login .perfil-section,
+    .pagina-login .form-section {
+        animation: none;
+    }
+
+    .pagina-login .perfil-card,
+    .pagina-login .perfil-seta,
+    .pagina-login .btn-vidro,
+    .pagina-login .btn-cta,
+    .pagina-login .btn-entrar {
+        transition: none;
+    }
+}

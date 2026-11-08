@@ -1,0 +1,238 @@
+/* ARTIGO.CSS - TechSaber+ (página de conteúdo)
+   Fundo azul com brilho lento, cartão de vidro azulado e títulos em azul.
+   Tudo fica dentro de .pagina-artigo. */
+
+.pagina-artigo {
+    --azul: #2563eb;
+    --azul-vivo: #0ea5e9;
+    --ciano: #22d3ee;
+    --cinza-900: #0f172a;
+    --cinza-700: #334155;
+    --cinza-500: #64748b;
+
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--cinza-900);
+    position: relative;
+    overflow-x: hidden;
+    background:
+        radial-gradient(70% 50% at 10% 0%, rgba(14, 165, 233, 0.35), transparent 70%),
+        radial-gradient(60% 50% at 95% 15%, rgba(37, 99, 235, 0.28), transparent 70%),
+        linear-gradient(180deg, #dbeafe 0%, #bfdbfe 55%, #93c5fd 100%);
+    background-attachment: fixed;
+}
+
+/* BRILHO LENTO NO AZUL DE FUNDO */
+.pagina-artigo::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.25) 50%, transparent 70%);
+    background-size: 250% 100%;
+    animation: brilhoFundo 16s ease-in-out infinite;
+}
+
+@keyframes brilhoFundo {
+    0%   { background-position: 120% 0; }
+    100% { background-position: -120% 0; }
+}
+
+/* NAVBAR EM VIDRO AZULADO */
+.pagina-artigo .topo {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 1rem 1.5rem 0;
+}
+
+.pagina-artigo .topo-nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.6rem 0.6rem 1.25rem;
+    border-radius: 999px;
+    background: rgba(219, 234, 254, 0.7);
+    border: 1px solid rgba(147, 197, 253, 0.6);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.1);
+}
+
+.pagina-artigo .logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--cinza-900);
+}
+
+.pagina-artigo .topo-botoes {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.pagina-artigo .btn-voltar-pagina,
+.pagina-artigo .btn-sair-pagina {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 1.3rem;
+    border: 2px solid var(--azul);
+    border-radius: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.pagina-artigo .btn-voltar-pagina {
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--azul);
+}
+
+.pagina-artigo .btn-sair-pagina {
+    background: linear-gradient(135deg, var(--azul), var(--azul-vivo));
+    color: #ffffff;
+    box-shadow: 0 8px 22px rgba(37, 99, 235, 0.35);
+}
+
+.pagina-artigo .btn-voltar-pagina:hover,
+.pagina-artigo .btn-sair-pagina:hover {
+    transform: scale(1.04);
+}
+
+.pagina-artigo .btn-voltar-pagina:hover {
+    background: var(--azul);
+    color: #ffffff;
+}
+
+.pagina-artigo .btn-voltar-pagina:focus-visible,
+.pagina-artigo .btn-sair-pagina:focus-visible,
+.pagina-artigo .btn-proximo:focus-visible {
+    outline: 3px solid var(--ciano);
+    outline-offset: 3px;
+}
+
+/* ÁREA DE CONTEÚDO */
+.pagina-artigo .conteudo {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+}
+
+.pagina-artigo .cabecalho-artigo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.pagina-artigo .modulo {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--azul-vivo);
+    margin: 0 0 0.5rem;
+}
+
+.pagina-artigo .cabecalho-artigo h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--cinza-900);
+    margin: 0;
+}
+
+/* CARTÃO DO TEXTO: vidro azulado, sem branco chapado */
+.pagina-artigo .cartao-artigo {
+    padding: 2.5rem 2.5rem 2rem;
+    border-radius: 22px;
+    background: linear-gradient(160deg, rgba(239, 246, 255, 0.85), rgba(191, 219, 254, 0.45));
+    border: 1px solid rgba(147, 197, 253, 0.7);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 20px 50px rgba(37, 99, 235, 0.12);
+}
+
+.pagina-artigo .cartao-artigo h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--azul-vivo);
+    margin: 1.75rem 0 0.9rem;
+}
+
+.pagina-artigo .cartao-artigo h2:first-child {
+    margin-top: 0;
+}
+
+.pagina-artigo .cartao-artigo p {
+    font-size: 0.98rem;
+    line-height: 1.8;
+    color: var(--cinza-700);
+    margin: 0 0 1.25rem;
+}
+
+.pagina-artigo .cartao-artigo strong {
+    color: var(--cinza-900);
+    font-weight: 600;
+}
+
+/* Trechos de código em azul */
+.pagina-artigo .cartao-artigo code {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.88em;
+    padding: 0.1em 0.45em;
+    border-radius: 6px;
+    background: rgba(37, 99, 235, 0.12);
+    color: var(--azul);
+}
+
+/* BOTÃO PRÓXIMO */
+.pagina-artigo .navegacao-artigo {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+}
+
+.pagina-artigo .btn-proximo {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.9rem 2rem;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--azul), var(--azul-vivo));
+    color: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pagina-artigo .btn-proximo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 38px rgba(37, 99, 235, 0.45);
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+    .pagina-artigo .cartao-artigo {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .pagina-artigo .topo-botoes {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+}
+
+/* ACESSIBILIDADE: sem brilho para quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    .pagina-artigo::before {
+        animation: none;
+    }
+}

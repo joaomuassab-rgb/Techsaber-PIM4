@@ -1,0 +1,74 @@
+/* SENHA.CSS - botão de mostrar/ocultar senha
+   Vale para qualquer input type="password" da página. */
+
+/* esconde o olho nativo do navegador (Edge) e o botão de preenchimento automático */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none !important;
+}
+
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-contacts-auto-fill-button {
+    display: none !important;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.campo-senha {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.25rem;
+}
+
+.campo-senha input {
+    margin-bottom: 0;
+    padding-right: 3.25rem;
+}
+
+.campo-senha .btn-olho {
+    position: absolute;
+    top: 50%;
+    right: 0.6rem;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: #64748b;
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.campo-senha .btn-olho svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+.campo-senha .btn-olho:hover {
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.08);
+}
+
+.campo-senha .btn-olho:focus-visible {
+    outline: 3px solid #22d3ee;
+    outline-offset: 2px;
+}
+
+/* celular: alvo de toque maior */
+@media (max-width: 600px) {
+    .campo-senha .btn-olho {
+        width: 44px;
+        height: 44px;
+        right: 0.25rem;
+    }
+
+    .campo-senha input {
+        padding-right: 3.6rem;
+    }
+}

@@ -1,0 +1,359 @@
+/* PERFIL.CSS - TechSaber+ (perfil do aluno)
+   Cabeçalho com avatar em degradê, cartão de sequência e estatísticas.
+   Tudo fica dentro de .pagina-perfil. */
+
+.pagina-perfil svg {
+    display: block;
+    max-width: 100%;
+    flex-shrink: 0;
+}
+
+.pagina-perfil {
+    --azul: #2563eb;
+    --azul-vivo: #0ea5e9;
+    --ciano: #22d3ee;
+    --cinza-900: #0f172a;
+    --cinza-500: #64748b;
+
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--cinza-900);
+    position: relative;
+    overflow-x: hidden;
+    background:
+        radial-gradient(60% 40% at 15% 0%, rgba(56, 189, 248, 0.35), transparent 70%),
+        radial-gradient(50% 40% at 90% 10%, rgba(37, 99, 235, 0.22), transparent 70%),
+        radial-gradient(60% 50% at 50% 100%, rgba(186, 230, 253, 0.6), transparent 70%),
+        linear-gradient(180deg, #ffffff 0%, #f1f5f9 50%, #e2e8f0 100%);
+}
+
+/* Aurora suave atrás do conteúdo */
+.pagina-perfil::before {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    width: 120%;
+    height: 60%;
+    top: -10%;
+    left: -10%;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 200deg at 50% 50%,
+        rgba(34, 211, 238, 0.4),
+        rgba(37, 99, 235, 0.3),
+        rgba(186, 230, 253, 0.55),
+        rgba(56, 189, 248, 0.4),
+        rgba(34, 211, 238, 0.4)
+    );
+    filter: blur(90px);
+    opacity: 0.75;
+    animation: respiroPerfil 12s ease-in-out infinite alternate;
+}
+
+@keyframes respiroPerfil {
+    from { transform: translateY(0) scale(1); }
+    to   { transform: translateY(-3%) scale(1.06); }
+}
+
+@keyframes entradaPerfil {
+    from { opacity: 0; transform: translateY(20px); filter: blur(6px); }
+    to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* NAVBAR FLUTUANTE */
+.pagina-perfil .topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 1rem 1.5rem;
+}
+
+.pagina-perfil .topo-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.6rem 0.6rem 1.25rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.08);
+}
+
+.pagina-perfil .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--cinza-900);
+    text-decoration: none;
+}
+
+.pagina-perfil .btn-voltar-pagina {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 1.3rem;
+    border: 2px solid var(--azul);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--azul);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.pagina-perfil .btn-voltar-pagina:hover {
+    background: var(--azul);
+    color: #ffffff;
+    transform: scale(1.04);
+}
+
+.pagina-perfil .btn-voltar-pagina:focus-visible {
+    outline: 3px solid var(--ciano);
+    outline-offset: 3px;
+}
+
+/* ÁREA PRINCIPAL */
+.pagina-perfil .perfil-main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 8rem 1.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: entradaPerfil 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* CARD DE VIDRO (base) */
+.pagina-perfil .card-vidro {
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 24px;
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.4s ease, background 0.4s ease;
+}
+
+.pagina-perfil .card-vidro:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.18), 0 24px 52px rgba(37, 99, 235, 0.16);
+}
+
+/* IDENTIDADE */
+.pagina-perfil .perfil-identidade {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    padding: 2rem 2.25rem;
+}
+
+.pagina-perfil .avatar {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 92px;
+    height: 92px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #38bdf8, #2563eb 55%, #0f172a);
+    color: #ffffff;
+    box-shadow: 0 16px 34px rgba(37, 99, 235, 0.35);
+}
+
+.pagina-perfil .avatar svg {
+    width: 44px;
+    height: 44px;
+}
+
+.pagina-perfil .perfil-texto h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin: 0;
+    color: var(--cinza-900);
+}
+
+.pagina-perfil .curso-atual {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.75rem 0 0;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.1);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--azul);
+}
+
+.pagina-perfil .curso-atual svg {
+    width: 16px;
+    height: 16px;
+    color: var(--azul-vivo);
+}
+
+/* SEQUÊNCIA DE DIAS */
+.pagina-perfil .perfil-ofensiva {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1.5rem 1.75rem;
+    text-align: center;
+}
+
+.pagina-perfil .ofensiva__icone {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #ffffff;
+    box-shadow: 0 10px 22px rgba(239, 68, 68, 0.3);
+}
+
+.pagina-perfil .ofensiva__icone svg {
+    width: 24px;
+    height: 24px;
+}
+
+.pagina-perfil .ofensiva__numero {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 0.75rem;
+    background: linear-gradient(135deg, #0f172a, #0ea5e9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.pagina-perfil .ofensiva__rotulo {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cinza-500);
+    margin-top: 0.4rem;
+}
+
+.pagina-perfil .ofensiva__barra {
+    display: flex;
+    gap: 8px;
+    margin-top: 1.25rem;
+}
+
+.pagina-perfil .ofensiva__seg {
+    width: 28px;
+    height: 7px;
+    border-radius: 999px;
+    background: #cbd5e1;
+}
+
+.pagina-perfil .ofensiva__seg--on {
+    background: linear-gradient(90deg, #0ea5e9, #2563eb);
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.45);
+}
+
+/* ESTATÍSTICAS */
+.pagina-perfil .perfil-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.pagina-perfil .stat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.6rem 1.5rem;
+    min-width: 0;
+}
+
+.pagina-perfil .stat-card__icone {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    color: #ffffff;
+}
+
+.pagina-perfil .stat-card__icone svg {
+    width: 21px;
+    height: 21px;
+}
+
+.pagina-perfil .stat-card__icone--azul {
+    background: linear-gradient(135deg, #38bdf8, #2563eb);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+}
+
+.pagina-perfil .stat-card__icone--ciano {
+    background: linear-gradient(135deg, #22d3ee, #0891b2);
+    box-shadow: 0 10px 20px rgba(8, 145, 178, 0.3);
+}
+
+.pagina-perfil .stat-card__icone--verde {
+    background: linear-gradient(135deg, #34d399, #059669);
+    box-shadow: 0 10px 20px rgba(5, 150, 105, 0.3);
+}
+
+.pagina-perfil .stat-card__rotulo {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cinza-500);
+    margin-top: 0.4rem;
+}
+
+.pagina-perfil .stat-card__valor {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--cinza-900);
+}
+
+.pagina-perfil .stat-card__valor small {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cinza-500);
+}
+
+/* RESPONSIVO */
+@media (max-width: 720px) {
+    .pagina-perfil .perfil-identidade {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.75rem 1.5rem;
+    }
+
+    .pagina-perfil .perfil-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ACESSIBILIDADE: sem movimento para quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+    .pagina-perfil::before,
+    .pagina-perfil .perfil-main {
+        animation: none;
+    }
+
+    .pagina-perfil .card-vidro {
+        transition: none;
+    }
+}

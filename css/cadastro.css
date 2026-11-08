@@ -1,0 +1,93 @@
+/* CADASTRO.CSS - tela de cadastro com o mesmo visual da escolha de perfil.
+   Tudo fica dentro de .pagina-login para não afetar as outras páginas. */
+
+.pagina-login .cadastro-wrap {
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+}
+
+.pagina-login .cadastro-card {
+    max-width: none;
+    margin: 0;
+    padding: 2.75rem 2.5rem 2.25rem;
+    text-align: left;
+}
+
+.pagina-login .cadastro-cabecalho {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.pagina-login .cadastro-cabecalho .eyebrow {
+    text-align: center;
+    margin: 0 0 0.75rem;
+}
+
+.pagina-login .cadastro-icone {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1.25rem;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #38bdf8, #2563eb);
+    color: #ffffff;
+    box-shadow: 0 12px 26px rgba(37, 99, 235, 0.3);
+}
+
+.pagina-login .cadastro-icone svg {
+    width: 30px;
+    height: 30px;
+}
+
+.pagina-login .cadastro-cabecalho h1 {
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+}
+
+.pagina-login .cadastro-cabecalho .texto-apoio {
+    margin-top: 0.75rem;
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.pagina-login .cadastro-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.pagina-login .cadastro-form fieldset {
+    display: flex;
+    flex-direction: column;
+}
+
+.pagina-login .cadastro-form .btn-entrar {
+    margin-top: 0.75rem;
+}
+
+.pagina-login .cadastro-rodape {
+    margin-top: 1.75rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.pagina-login .cadastro-rodape a {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.pagina-login .cadastro-rodape a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 560px) {
+    .pagina-login .cadastro-card {
+        padding: 2rem 1.4rem 1.75rem;
+    }
+}

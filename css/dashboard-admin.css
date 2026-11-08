@@ -1,0 +1,713 @@
+/* DASHBOARD-ADMIN.CSS - TechSaber+ (painel do administrador)
+   Visual em aurora com vidro azulado, igual às demais telas.
+   Tudo fica dentro de .pagina-admin. */
+
+.pagina-admin svg {
+    display: block;
+    max-width: 100%;
+    flex-shrink: 0;
+}
+
+.pagina-admin {
+    --azul: #2563eb;
+    --azul-vivo: #0ea5e9;
+    --ciano: #22d3ee;
+    --cinza-900: #0f172a;
+    --cinza-700: #334155;
+    --cinza-500: #64748b;
+
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--cinza-900);
+    position: relative;
+    overflow-x: hidden;
+    background:
+        radial-gradient(60% 40% at 15% 0%, rgba(56, 189, 248, 0.35), transparent 70%),
+        radial-gradient(50% 40% at 90% 10%, rgba(37, 99, 235, 0.22), transparent 70%),
+        radial-gradient(60% 50% at 50% 100%, rgba(186, 230, 253, 0.6), transparent 70%),
+        linear-gradient(180deg, #ffffff 0%, #f1f5f9 50%, #e2e8f0 100%);
+}
+
+/* Aurora suave atrás do conteúdo */
+.pagina-admin::before {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    width: 120%;
+    height: 60%;
+    top: -10%;
+    left: -10%;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 200deg at 50% 50%,
+        rgba(34, 211, 238, 0.4),
+        rgba(37, 99, 235, 0.3),
+        rgba(186, 230, 253, 0.55),
+        rgba(56, 189, 248, 0.4),
+        rgba(34, 211, 238, 0.4)
+    );
+    filter: blur(90px);
+    opacity: 0.75;
+    animation: respiroAdmin 12s ease-in-out infinite alternate;
+}
+
+@keyframes respiroAdmin {
+    from { transform: translateY(0) scale(1); }
+    to   { transform: translateY(-3%) scale(1.06); }
+}
+
+@keyframes entradaAdmin {
+    from { opacity: 0; transform: translateY(18px); filter: blur(6px); }
+    to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes modalEntra {
+    from { opacity: 0; transform: translateY(16px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* NAVBAR FLUTUANTE */
+.pagina-admin .topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 1rem 1.5rem;
+}
+
+.pagina-admin .topo-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 0.6rem 0.6rem 1.25rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.08);
+}
+
+.pagina-admin .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    color: var(--cinza-900);
+    text-decoration: none;
+}
+
+.pagina-admin .topo-direita {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.pagina-admin .saudacao {
+    font-size: 0.88rem;
+    color: var(--cinza-500);
+}
+
+.pagina-admin .saudacao strong {
+    color: var(--cinza-900);
+    font-weight: 600;
+}
+
+.pagina-admin .btn-voltar-pagina {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 1.3rem;
+    border: 2px solid var(--azul);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--azul);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.pagina-admin .btn-voltar-pagina:hover {
+    background: var(--azul);
+    color: #ffffff;
+    transform: scale(1.04);
+}
+
+.pagina-admin .btn-voltar-pagina:focus-visible {
+    outline: 3px solid var(--ciano);
+    outline-offset: 3px;
+}
+
+/* ABAS: centralizadas, abaixo da navbar */
+.pagina-admin .abas {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    width: fit-content;
+    max-width: calc(100% - 3rem);
+    margin: 6.5rem auto 0;
+    padding: 0.4rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.08);
+}
+
+.pagina-admin .aba-btn {
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 13px;
+    background: transparent;
+    color: var(--cinza-500);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pagina-admin .aba-btn:hover {
+    color: var(--cinza-900);
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.pagina-admin .aba-btn[aria-selected="true"] {
+    background: linear-gradient(135deg, var(--azul), var(--azul-vivo));
+    color: #ffffff;
+    box-shadow: 0 8px 22px rgba(37, 99, 235, 0.35);
+}
+
+.pagina-admin .aba-btn:focus-visible {
+    outline: 3px solid var(--ciano);
+    outline-offset: 2px;
+}
+
+/* ÁREA PRINCIPAL */
+.pagina-admin .admin-main {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cada aba: só a ativa aparece */
+.pagina-admin .aba-painel {
+    display: none;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+.pagina-admin .aba-painel.active {
+    display: flex;
+    animation: entradaAdmin 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.pagina-admin .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cinza-500);
+    margin: 0 0 0.6rem;
+}
+
+.pagina-admin h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.9rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--cinza-900);
+    margin: 0;
+}
+
+.pagina-admin .secao-titulo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--cinza-900);
+    margin: 0 0 1rem;
+}
+
+/* CARDS DE TOTAIS */
+.pagina-admin .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.pagina-admin .stat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.75rem 1.6rem;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.4s ease, background 0.4s ease;
+}
+
+.pagina-admin .stat-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 24px 52px rgba(37, 99, 235, 0.16);
+}
+
+.pagina-admin .stat-card__icone {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    margin-bottom: 0.6rem;
+    border-radius: 15px;
+    color: #ffffff;
+}
+
+.pagina-admin .stat-card__icone svg {
+    width: 22px;
+    height: 22px;
+}
+
+.pagina-admin .stat-card__icone--azul {
+    background: linear-gradient(135deg, #38bdf8, #2563eb);
+    box-shadow: 0 10px 22px rgba(37, 99, 235, 0.3);
+}
+
+.pagina-admin .stat-card__icone--ciano {
+    background: linear-gradient(135deg, #22d3ee, #0891b2);
+    box-shadow: 0 10px 22px rgba(8, 145, 178, 0.3);
+}
+
+.pagina-admin .stat-card__rotulo {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cinza-500);
+}
+
+.pagina-admin .stat-card__valor {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(135deg, #0f172a, #0ea5e9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* GRÁFICOS */
+.pagina-admin .graficos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.pagina-admin .grafico-card {
+    padding: 1.6rem 1.75rem;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.pagina-admin .grafico-card__titulo {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cinza-500);
+    margin: 0 0 1.25rem;
+}
+
+.pagina-admin .barras {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagina-admin .barra-rotulo {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--cinza-700);
+    margin-bottom: 0.45rem;
+}
+
+.pagina-admin .barra-rotulo output {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--cinza-900);
+}
+
+.pagina-admin .barra {
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    overflow: hidden;
+}
+
+.pagina-admin .barra__preench {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: 999px;
+    transition: width 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.pagina-admin .barra__preench--azul {
+    background: linear-gradient(90deg, #2563eb, #22d3ee);
+}
+
+.pagina-admin .barra__preench--rosa {
+    background: linear-gradient(90deg, #ec4899, #f472b6);
+}
+
+/* CABEÇALHO DAS TABELAS */
+.pagina-admin .cabecalho-tabela {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* BOTÕES PRIMÁRIOS E FANTASMA */
+.pagina-admin .btn-primario {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.35rem;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--azul), var(--azul-vivo));
+    color: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pagina-admin .btn-primario:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgba(37, 99, 235, 0.45);
+}
+
+.pagina-admin .btn-fantasma {
+    padding: 0.7rem 1.25rem;
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--azul);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.pagina-admin .btn-fantasma:hover {
+    background: var(--azul);
+    color: #ffffff;
+    transform: scale(1.04);
+}
+
+/* TABELAS EM VIDRO */
+.pagina-admin .tabela-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.pagina-admin .tabela {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+}
+
+.pagina-admin .tabela thead th {
+    padding: 1rem 1.25rem;
+    background: rgba(37, 99, 235, 0.07);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cinza-500);
+    text-align: left;
+    white-space: nowrap;
+}
+
+.pagina-admin .tabela tbody tr {
+    border-top: 1px solid rgba(203, 213, 225, 0.6);
+    transition: background 0.25s ease;
+}
+
+.pagina-admin .tabela tbody tr:hover {
+    background: rgba(37, 99, 235, 0.05);
+}
+
+.pagina-admin .tabela tbody td {
+    padding: 1rem 1.25rem;
+    font-size: 0.92rem;
+    color: var(--cinza-700);
+    vertical-align: middle;
+}
+
+.pagina-admin .tabela tbody td:first-child {
+    font-weight: 600;
+    color: var(--cinza-900);
+}
+
+/* STATUS */
+.pagina-admin .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.pagina-admin .status::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.pagina-admin .status--ativo {
+    background: rgba(16, 185, 129, 0.12);
+    color: #047857;
+}
+
+.pagina-admin .status--ativo::before {
+    background: #10b981;
+}
+
+.pagina-admin .status--inativo {
+    background: rgba(239, 68, 68, 0.1);
+    color: #b91c1c;
+}
+
+.pagina-admin .status--inativo::before {
+    background: #ef4444;
+}
+
+/* BOTÕES DE AÇÃO NAS LINHAS */
+.pagina-admin .acoes {
+    white-space: nowrap;
+}
+
+.pagina-admin .btn-acao {
+    padding: 0.4rem 0.9rem;
+    margin-right: 0.35rem;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.pagina-admin .btn-acao--editar {
+    background: linear-gradient(135deg, var(--azul), var(--azul-vivo));
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+}
+
+.pagina-admin .btn-acao--remover {
+    background: rgba(239, 68, 68, 0.12);
+    color: #b91c1c;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.pagina-admin .btn-acao:hover {
+    transform: translateY(-1px) scale(1.04);
+}
+
+.pagina-admin .btn-acao--remover:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+/* MODAL */
+.pagina-admin .modal {
+    width: min(480px, 92vw);
+    margin: auto;
+    padding: 2rem;
+    border: none;
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.97);
+    color: var(--cinza-900);
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 30px 80px rgba(15, 23, 42, 0.25);
+}
+
+.pagina-admin .modal[open] {
+    animation: modalEntra 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.pagina-admin .modal::backdrop {
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.pagina-admin .modal__titulo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+    color: var(--cinza-900);
+}
+
+.pagina-admin .campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-bottom: 1.1rem;
+}
+
+.pagina-admin .campo label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--cinza-700);
+}
+
+.pagina-admin .campo input,
+.pagina-admin .campo select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 14px;
+    border: 1px solid rgba(37, 99, 235, 0.22);
+    background: rgba(248, 250, 252, 0.95);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    color: var(--cinza-900);
+    box-sizing: border-box;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pagina-admin .campo input:focus,
+.pagina-admin .campo select:focus {
+    outline: none;
+    border-color: var(--azul);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.pagina-admin .modal__acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+/* RESPONSIVO */
+@media (max-width: 700px) {
+    .pagina-admin .topo-nav {
+        padding: 0.6rem 0.6rem 0.6rem 1rem;
+    }
+
+    .pagina-admin .saudacao {
+        display: none;
+    }
+
+    .pagina-admin .abas {
+        margin-top: 6rem;
+        max-width: calc(100% - 2rem);
+        overflow-x: auto;
+        justify-content: flex-start;
+        scrollbar-width: none;
+    }
+
+    .pagina-admin .abas::-webkit-scrollbar {
+        display: none;
+    }
+
+    .pagina-admin .aba-btn {
+        padding: 0.6rem 0.9rem;
+        font-size: 0.85rem;
+    }
+
+    .pagina-admin .admin-main {
+        padding: 2rem 1rem 3rem;
+    }
+
+    .pagina-admin .stat-card__valor {
+        font-size: 2.2rem;
+    }
+
+    .pagina-admin .graficos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pagina-admin .cabecalho-tabela {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pagina-admin .btn-primario {
+        justify-content: center;
+    }
+
+    .pagina-admin .modal__acoes {
+        flex-direction: column-reverse;
+    }
+
+    .pagina-admin .modal__acoes button {
+        width: 100%;
+    }
+}
+
+/* ACESSIBILIDADE: sem movimento para quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+    .pagina-admin::before,
+    .pagina-admin .aba-painel.active,
+    .pagina-admin .modal[open] {
+        animation: none;
+    }
+
+    .pagina-admin .stat-card,
+    .pagina-admin .btn-primario,
+    .pagina-admin .btn-fantasma,
+    .pagina-admin .btn-acao,
+    .pagina-admin .aba-btn,
+    .pagina-admin .barra__preench {
+        transition: none;
+    }
+}

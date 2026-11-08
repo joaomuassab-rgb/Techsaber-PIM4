@@ -1,0 +1,56 @@
+/* VARIABLES CSS - TechSaber+
+   Cores, fontes, tamanhos e fundo atmosférico do site */
+
+:root {
+
+    /* CORES PRINCIPAIS */
+    --cor-fundo: #f8fafc;          /* branco levemente azulado */
+    --cor-fundo-escuro: #e2e8f0;   /* cinza claro para áreas de destaque */
+    --cor-primaria: #2563eb;       /* azul royal principal */
+    --cor-primaria-hover: #1d4ed8; /* azul mais escuro no hover */
+    --cor-destaque: #0ea5e9;       /* azul céu dos botões e badges */
+    --cor-xp: #f59e0b;             /* âmbar do XP e da ofensiva */
+
+    /* CORES DE TEXTO */
+    --texto-claro: #1e293b;        /* texto principal (cinza escuro, legível sobre branco) */
+    --texto-suave: #64748b;        /* texto cinza secundário */
+
+    /* CORES DE CARDS */
+    --card-fundo: rgba(255, 255, 255, 0.82); /* branco semitransparente, deixa a névoa aparecer */
+    --card-borda: rgba(203, 213, 225, 0.7);  /* borda cinza clara */
+
+    /* FONTES */
+    --fonte-titulo: 'Space Grotesk', sans-serif;
+    --fonte-corpo: 'Poppins', sans-serif;
+
+    /* TAMANHOS DE FONTE */
+    --fonte-pequena: 0.875rem;     /* 14px */
+    --fonte-normal: 1rem;          /* 16px */
+    --fonte-media: 1.25rem;        /* 20px */
+    --fonte-grande: 2rem;          /* 32px */
+    --tamanho-titulo: 3rem;        /* 48px */
+
+    /* ESPAÇAMENTOS */
+    --espaco-p: 1rem;              /* espaço pequeno */
+    --espaco-m: 2rem;              /* espaço médio */
+    --espaco-g: 4rem;              /* espaço grande */
+
+    /* BORDAS E SOMBRAS */
+    --borda-raio: 12px;            /* arredondamento padrão */
+    --borda-raio-btn: 8px;         /* arredondamento de botões */
+    --sombra-card: 0 8px 32px rgba(37, 99, 235, 0.08);
+
+    /* FUNDO ATMOSFÉRICO
+       Névoa em degradê com manchas de luz, mais uma faixa de ondas no rodapé da tela */
+    --fundo-nevoa:
+        radial-gradient(ellipse 60% 50% at 15% 10%, rgba(186, 230, 253, 0.55) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 45% at 85% 25%, rgba(224, 242, 254, 0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 70% 60% at 50% 90%, rgba(147, 197, 253, 0.35) 0%, transparent 70%),
+        linear-gradient(180deg, #ffffff 0%, #f1f5f9 45%, #e0f2fe 100%);
+
+    --fundo-ondas: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 220' preserveAspectRatio='none'%3E%3Cpath fill='%23bae6fd' fill-opacity='0.35' d='M0,128L80,138.7C160,149,320,171,480,165.3C640,160,800,128,960,122.7C1120,117,1280,139,1360,149.3L1440,160L1440,220L0,220Z'/%3E%3Cpath fill='%2393c5fd' fill-opacity='0.25' d='M0,176L120,166.7C240,157,480,139,720,144C960,149,1200,181,1320,197.3L1440,213L1440,220L0,220Z'/%3E%3C/svg%3E");
+
+    /* GRADIENTES (usados pelas páginas) */
+    --gradiente-fundo: var(--fundo-nevoa);
+    --gradiente-card: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+}

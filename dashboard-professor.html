@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSaber+ | Painel do Professor</title>
+
+    <link rel="stylesheet" href="css/dashboard-professor.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@500;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina-professor">
+
+    <!-- NAVBAR -->
+    <header class="topo">
+        <nav class="topo-nav">
+            <a href="dashboard-professor.html" class="logo">TechSaber+</a>
+            <div class="topo-direita">
+                <span class="saudacao">Bem-vindo, <strong>Professor</strong></span>
+                <a href="index.html" class="btn-voltar-pagina">Voltar</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="prof-main">
+
+        <!-- CABEÇALHO DA PÁGINA -->
+        <section class="prof-cabecalho">
+            <p class="eyebrow">Painel do professor</p>
+            <h1>Lições</h1>
+            <p class="subtitulo">Crie novas atividades e acompanhe o andamento das turmas.</p>
+        </section>
+
+        <!-- ADICIONAR ATIVIDADE -->
+        <section aria-label="Nova atividade">
+            <button class="add-card" id="btn-abrir-modal" aria-label="Adicionar nova atividade">
+                <span class="add-card__icone" aria-hidden="true">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="12" y1="11" x2="12" y2="17"/>
+                        <line x1="9" y1="14" x2="15" y2="14"/>
+                    </svg>
+                </span>
+                <span class="add-card__label">Adicionar Atividade</span>
+            </button>
+        </section>
+
+        <!-- ATIVIDADES ANTERIORES -->
+        <section aria-labelledby="prev-titulo">
+
+            <header class="prev-header">
+                <h2 id="prev-titulo" class="prev-title">Atividades Anteriores</h2>
+                <button id="btn-editar-atividades" class="btn-ghost" aria-pressed="false">Editar</button>
+            </header>
+
+            <div class="table-wrap" id="tabela-wrap" role="region" aria-label="Lista de atividades anteriores" tabindex="0">
+                <table class="activities-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Turma</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Banco de Dados</td>
+                            <td>Turma A</td>
+                            <td>15/05/2026</td>
+                            <td><span class="badge badge--active">Ativa</span></td>
+                            <td><button class="btn-action">Acesse</button></td>
+                        </tr>
+                        <tr>
+                            <td>Acessibilidade (Libras)</td>
+                            <td>Turma B</td>
+                            <td>10/05/2026</td>
+                            <td><span class="badge badge--done">Concluída</span></td>
+                            <td><button class="btn-action">Acesse</button></td>
+                        </tr>
+                        <tr>
+                            <td>HTML &amp; CSS Básico</td>
+                            <td>Turma C</td>
+                            <td>05/05/2026</td>
+                            <td><span class="badge badge--active">Ativa</span></td>
+                            <td><button class="btn-action">Acesse</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- MODAL: Adicionar Atividade -->
+    <dialog id="modal-add" class="modal" aria-labelledby="modal-titulo">
+
+        <h2 id="modal-titulo" class="modal__title">Nova Atividade</h2>
+
+        <form id="form-atividade" novalidate>
+
+            <div class="field">
+                <label for="input-titulo">Título da atividade</label>
+                <input id="input-titulo" type="text" placeholder="Ex: Avaliação de Engenharia" maxlength="80">
+                <small class="erro-campo" id="erro-titulo" hidden>Digite um título para a atividade.</small>
+            </div>
+
+            <div class="field">
+                <label for="input-turma">Turma</label>
+                <select id="input-turma">
+                    <option value="">Selecione uma turma</option>
+                    <option>Turma A</option>
+                    <option>Turma B</option>
+                    <option>Turma C</option>
+                </select>
+                <small class="erro-campo" id="erro-turma" hidden>Escolha a turma.</small>
+            </div>
+
+            <div class="field">
+                <label for="input-desc">Descrição</label>
+                <textarea id="input-desc" rows="3" maxlength="300" placeholder="Descreva brevemente a atividade..."></textarea>
+            </div>
+
+            <footer class="modal__actions">
+                <button type="button" class="btn-ghost" id="btn-cancelar-modal">Cancelar</button>
+                <button type="submit" class="btn-primary">Publicar</button>
+            </footer>
+
+        </form>
+
+    </dialog>
+
+    <!-- CAIXA DE CONFIRMAÇÃO DO SITE (substitui os alertas do navegador) -->
+    <dialog id="modal-confirmar" class="modal modal--confirmar" aria-labelledby="confirmar-titulo">
+        <h2 id="confirmar-titulo" class="modal__title">Confirmar</h2>
+        <p class="confirmar-texto" id="confirmar-texto"></p>
+        <footer class="modal__actions">
+            <button type="button" class="btn-ghost" id="btn-nao-confirmar">Cancelar</button>
+            <button type="button" class="btn-perigo" id="btn-sim-confirmar">Remover</button>
+        </footer>
+    </dialog>
+
+    <!-- AVISO DO SITE (substitui os alertas do navegador) -->
+    <dialog id="modal-aviso" class="modal modal--confirmar" aria-labelledby="aviso-titulo">
+        <h2 id="aviso-titulo" class="modal__title">Aviso</h2>
+        <p class="confirmar-texto" id="aviso-texto"></p>
+        <footer class="modal__actions">
+            <button type="button" class="btn-primary" id="btn-fechar-aviso">Entendi</button>
+        </footer>
+    </dialog>
+
+    <!-- Script da página -->
+    <script src="js/dashboard-professor.js"></script>
+
+    <script src="js/assistente.js"></script>
+
+</body>
+</html>

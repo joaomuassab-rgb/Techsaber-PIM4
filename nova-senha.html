@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSaber+ | Nova senha</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@500;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina-login">
+
+    <!-- NAVBAR -->
+    <header class="topo">
+        <nav class="topo-nav">
+            <a href="index.html" class="logo">TechSaber+</a>
+            <div class="topo-botoes">
+                <a href="login.html" class="btn-vidro">Voltar</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="login-main">
+
+        <section class="form-section" aria-label="Nova senha">
+
+            <article class="login-card">
+                <p class="eyebrow">Redefinir senha</p>
+                <h2>Crie uma nova senha</h2>
+
+                <output class="msg-erro" id="msg-erro" style="display:none;" role="alert">
+                    A senha precisa ter pelo menos 6 caracteres e as duas senhas precisam ser iguais.
+                </output>
+
+                <output class="msg-sucesso" id="msg-sucesso" style="display:none;" role="status">
+                    Demonstração: senha redefinida. Agora você pode entrar com a nova senha.
+                </output>
+
+                <fieldset>
+                    <legend class="sr-only">Nova senha</legend>
+
+                    <label for="nova-senha">Nova senha</label>
+                    <input type="password" id="nova-senha" placeholder="digite a nova senha" autocomplete="new-password">
+
+                    <label for="confirmar-senha">Confirmar nova senha</label>
+                    <input type="password" id="confirmar-senha" placeholder="digite a senha novamente" autocomplete="new-password">
+                </fieldset>
+
+                <button class="btn-entrar" id="btn-salvar-senha">Salvar nova senha</button>
+
+                <footer class="login-rodape">
+                    <a href="login.html">Voltar para o login</a>
+                </footer>
+            </article>
+
+        </section>
+
+    </main>
+
+    <script>
+        /* Demonstração: não salva senha nenhuma. Só confere o tamanho e se as duas são iguais. */
+        (function () {
+            const nova      = document.getElementById("nova-senha");
+            const confirmar = document.getElementById("confirmar-senha");
+            const erro      = document.getElementById("msg-erro");
+            const sucesso   = document.getElementById("msg-sucesso");
+
+            document.getElementById("btn-salvar-senha").addEventListener("click", () => {
+                const ok = nova.value.length >= 6 && nova.value === confirmar.value;
+
+                erro.style.display    = ok ? "none" : "block";
+                sucesso.style.display = ok ? "block" : "none";
+            });
+        })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,507 @@
+/* TRILHAS.CSS - TechSaber+ (trilha interativa)
+   Linha do tempo com etapas, barras animadas e cards de vidro.
+   Tudo fica dentro de .pagina-trilhas. */
+
+.pagina-trilhas svg {
+    display: block;
+    max-width: 100%;
+    flex-shrink: 0;
+}
+
+.pagina-trilhas {
+    --azul: #2563eb;
+    --azul-vivo: #0ea5e9;
+    --ciano: #22d3ee;
+    --cinza-900: #0f172a;
+    --cinza-500: #64748b;
+
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--cinza-900);
+    position: relative;
+    overflow-x: hidden;
+    background:
+        radial-gradient(60% 40% at 15% 0%, rgba(56, 189, 248, 0.35), transparent 70%),
+        radial-gradient(50% 40% at 90% 10%, rgba(37, 99, 235, 0.22), transparent 70%),
+        radial-gradient(60% 50% at 50% 100%, rgba(186, 230, 253, 0.6), transparent 70%),
+        linear-gradient(180deg, #ffffff 0%, #f1f5f9 50%, #e2e8f0 100%);
+}
+
+/* Aurora suave atrás do conteúdo */
+.pagina-trilhas::before {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    width: 120%;
+    height: 60%;
+    top: -10%;
+    left: -10%;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 200deg at 50% 50%,
+        rgba(34, 211, 238, 0.4),
+        rgba(37, 99, 235, 0.3),
+        rgba(186, 230, 253, 0.55),
+        rgba(56, 189, 248, 0.4),
+        rgba(34, 211, 238, 0.4)
+    );
+    filter: blur(90px);
+    opacity: 0.75;
+    animation: respiroTrilhas 12s ease-in-out infinite alternate;
+}
+
+@keyframes respiroTrilhas {
+    from { transform: translateY(0) scale(1); }
+    to   { transform: translateY(-3%) scale(1.06); }
+}
+
+@keyframes entradaTrilhas {
+    from { opacity: 0; transform: translateY(20px); filter: blur(6px); }
+    to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes pulso {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.55); }
+    50%      { box-shadow: 0 0 0 12px rgba(14, 165, 233, 0); }
+}
+
+/* NAVBAR FLUTUANTE */
+.pagina-trilhas .topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 1rem 1.5rem;
+}
+
+.pagina-trilhas .topo-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.6rem 0.6rem 1.25rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.08);
+}
+
+.pagina-trilhas .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--cinza-900);
+    text-decoration: none;
+}
+
+.pagina-trilhas .btn-voltar-pagina {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 1.3rem;
+    border: 2px solid var(--azul);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--azul);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.pagina-trilhas .btn-voltar-pagina:hover {
+    background: var(--azul);
+    color: #ffffff;
+    transform: scale(1.04);
+}
+
+.pagina-trilhas .btn-voltar-pagina:focus-visible {
+    outline: 3px solid var(--ciano);
+    outline-offset: 3px;
+}
+
+/* ÁREA PRINCIPAL */
+.pagina-trilhas .trilha-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 8rem 1.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    animation: entradaTrilhas 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.pagina-trilhas .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cinza-500);
+    margin: 0 0 0.75rem;
+}
+
+.pagina-trilhas .destaque {
+    background: linear-gradient(90deg, #2563eb, #22d3ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* CARDS DE VIDRO (base) */
+.pagina-trilhas .card-vidro,
+.pagina-trilhas .curso-card,
+.pagina-trilhas .card-dias {
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 24px;
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+/* CABEÇALHO */
+.pagina-trilhas .trilha-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.pagina-trilhas .trilha-saudacao {
+    flex: 1 1 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pagina-trilhas .trilha-saudacao h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.9rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin: 0;
+    color: var(--cinza-900);
+}
+
+.pagina-trilhas .trilha-subtitulo {
+    margin: 0.75rem 0 0;
+    color: var(--cinza-500);
+    font-size: 0.98rem;
+    line-height: 1.6;
+}
+
+/* CARD DE DIAS CONSECUTIVOS */
+.pagina-trilhas .card-dias {
+    flex: 0 0 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+}
+
+.pagina-trilhas .card-dias__icone {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #ffffff;
+    box-shadow: 0 10px 22px rgba(239, 68, 68, 0.3);
+}
+
+.pagina-trilhas .card-dias__icone svg {
+    width: 22px;
+    height: 22px;
+}
+
+.pagina-trilhas .card-dias__numero {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 0.6rem;
+    background: linear-gradient(135deg, #0f172a, #0ea5e9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.pagina-trilhas .card-dias__rotulo {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cinza-500);
+    margin-top: 0.35rem;
+}
+
+.pagina-trilhas .card-dias__barra {
+    display: flex;
+    gap: 6px;
+    margin-top: 1rem;
+}
+
+.pagina-trilhas .card-dias__seg {
+    width: 22px;
+    height: 6px;
+    border-radius: 999px;
+    background: #cbd5e1;
+}
+
+.pagina-trilhas .card-dias__seg--on {
+    background: linear-gradient(90deg, #0ea5e9, #2563eb);
+}
+
+/* LINHA DO TEMPO DAS ETAPAS */
+.pagina-trilhas .trilha-etapas {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem 1.75rem 1.5rem;
+    position: relative;
+}
+
+/* Linha de fundo que conecta as etapas */
+.pagina-trilhas .trilha-etapas::before {
+    content: "";
+    position: absolute;
+    top: calc(2rem + 26px);
+    left: 12%;
+    right: 12%;
+    height: 3px;
+    border-radius: 999px;
+    background: #cbd5e1;
+    z-index: 0;
+}
+
+.pagina-trilhas .etapa {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    flex: 1;
+}
+
+.pagina-trilhas .etapa__no {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    color: #94a3b8;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.pagina-trilhas .etapa__no svg {
+    width: 22px;
+    height: 22px;
+}
+
+.pagina-trilhas .etapa__rotulo {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--cinza-500);
+}
+
+/* Etapa concluída */
+.pagina-trilhas .etapa--feita .etapa__no {
+    background: linear-gradient(135deg, #2563eb, #0ea5e9);
+    border-color: transparent;
+    color: #ffffff;
+    box-shadow: 0 10px 22px rgba(37, 99, 235, 0.35);
+}
+
+.pagina-trilhas .etapa--feita .etapa__rotulo {
+    color: var(--cinza-900);
+}
+
+/* Etapa atual, pulsando */
+.pagina-trilhas .etapa--atual .etapa__no {
+    background: #ffffff;
+    border-color: #0ea5e9;
+    color: #0ea5e9;
+    animation: pulso 2s ease-out infinite;
+    transform: scale(1.08);
+}
+
+.pagina-trilhas .etapa--atual .etapa__rotulo {
+    color: var(--cinza-900);
+    font-weight: 700;
+}
+
+.pagina-trilhas .etapa__aviso {
+    position: absolute;
+    top: -26px;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #2563eb, #0ea5e9);
+    color: #ffffff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Etapa bloqueada */
+.pagina-trilhas .etapa--bloqueada .etapa__no {
+    opacity: 0.55;
+}
+
+.pagina-trilhas .etapa--bloqueada .etapa__rotulo {
+    opacity: 0.6;
+}
+
+.pagina-trilhas .etapa--feita .etapa__no:hover,
+.pagina-trilhas .etapa--atual .etapa__no:hover {
+    transform: scale(1.12);
+}
+
+/* CARDS DOS CURSOS */
+.pagina-trilhas .trilha-cursos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.pagina-trilhas .curso-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.6rem 1.75rem;
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.4s ease, background 0.4s ease;
+}
+
+.pagina-trilhas .curso-card:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2), 0 26px 56px rgba(37, 99, 235, 0.18);
+}
+
+.pagina-trilhas .curso-card__topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pagina-trilhas .curso-card h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--cinza-900);
+    margin: 0;
+}
+
+.pagina-trilhas .curso-card__pct {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--azul);
+}
+
+/* Barra de progresso animada */
+.pagina-trilhas .barra {
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    overflow: hidden;
+}
+
+.pagina-trilhas .barra__preench {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #2563eb, #0ea5e9, #22d3ee);
+    background-size: 200% 100%;
+    transition: width 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+    animation: brilhoBarra 3s linear infinite;
+}
+
+@keyframes brilhoBarra {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.pagina-trilhas .curso-card__acao {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    align-self: flex-start;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--azul);
+    text-decoration: none;
+    transition: gap 0.3s ease, color 0.3s ease;
+}
+
+.pagina-trilhas .curso-card__acao svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+}
+
+.pagina-trilhas .curso-card__acao:hover {
+    color: var(--azul-vivo);
+    gap: 0.7rem;
+}
+
+.pagina-trilhas .curso-card__acao:hover svg {
+    transform: translateX(3px);
+}
+
+/* RESPONSIVO */
+@media (max-width: 760px) {
+    .pagina-trilhas .trilha-cursos {
+        grid-template-columns: 1fr;
+    }
+
+    .pagina-trilhas .card-dias {
+        flex: 1 1 100%;
+    }
+
+    .pagina-trilhas .trilha-etapas {
+        padding: 2rem 0.75rem 1.25rem;
+    }
+
+    .pagina-trilhas .etapa__no {
+        width: 42px;
+        height: 42px;
+    }
+
+    .pagina-trilhas .etapa__rotulo {
+        font-size: 0.72rem;
+    }
+}
+
+/* ACESSIBILIDADE: sem movimento para quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+    .pagina-trilhas::before,
+    .pagina-trilhas .trilha-main,
+    .pagina-trilhas .etapa--atual .etapa__no,
+    .pagina-trilhas .barra__preench {
+        animation: none;
+    }
+
+    .pagina-trilhas .barra__preench,
+    .pagina-trilhas .curso-card,
+    .pagina-trilhas .etapa__no {
+        transition: none;
+    }
+}

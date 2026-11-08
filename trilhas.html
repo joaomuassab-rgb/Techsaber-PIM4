@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSaber+ | Trilhas</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/trilhas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@500;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina-trilhas">
+
+    <!-- NAVBAR -->
+    <header class="topo">
+        <nav class="topo-nav">
+            <a href="dashboard-aluno.html" class="logo">TechSaber+</a>
+            <div class="topo-botoes">
+                <a href="dashboard-aluno.html" class="btn-voltar-pagina">Voltar</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="trilha-main">
+
+        <!-- CABEÇALHO: saudação e dias consecutivos -->
+        <section class="trilha-topo">
+            <div class="trilha-saudacao">
+                <p class="eyebrow">Trilha ativa</p>
+                <h1>Bem-vindo de volta, <span class="destaque" id="nome-aluno">Aluno</span></h1>
+                <p class="trilha-subtitulo" id="resumo-trilha">Carregando seu progresso...</p>
+            </div>
+
+            <div class="card-dias">
+                <span class="card-dias__icone" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+                    </svg>
+                </span>
+                <strong class="card-dias__numero" id="dias-consecutivos" data-ofensiva>0</strong>
+                <span class="card-dias__rotulo">Dias consecutivos</span>
+                <div class="card-dias__barra" id="barra-dias" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <!-- LINHA DO TEMPO DO MÓDULO -->
+        <section class="trilha-etapas card-vidro" aria-label="Etapas do módulo">
+            <div class="etapa" data-etapa="1">
+                <span class="etapa__no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span class="etapa__rotulo">Lição 1</span>
+            </div>
+            <div class="etapa" data-etapa="2">
+                <span class="etapa__no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span class="etapa__rotulo">Lição 2</span>
+            </div>
+            <div class="etapa" data-etapa="3">
+                <span class="etapa__no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span class="etapa__rotulo">Lição 3</span>
+            </div>
+            <div class="etapa" data-etapa="4">
+                <span class="etapa__no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+                <span class="etapa__rotulo">Lição 4</span>
+            </div>
+            <div class="etapa" data-etapa="5">
+                <span class="etapa__no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+                <span class="etapa__rotulo">Lição 5</span>
+            </div>
+        </section>
+
+        <!-- CURSOS EM ANDAMENTO: percentuais e links calculados pelo progresso salvo -->
+        <section class="trilha-cursos" aria-label="Cursos em andamento">
+
+            <article class="curso-card" data-curso="Front-End">
+                <header class="curso-card__topo">
+                    <h2>Front-end</h2>
+                    <span class="curso-card__pct">0%</span>
+                </header>
+                <div class="barra"><span class="barra__preench" data-largura="0"></span></div>
+                <a class="curso-card__acao" href="artigo.html?curso=Front-End&etapa=1">
+                    <span class="acao-texto">Começar</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+                </a>
+            </article>
+
+            <article class="curso-card" data-curso="Banco-de-Dados">
+                <header class="curso-card__topo">
+                    <h2>Banco de dados</h2>
+                    <span class="curso-card__pct">0%</span>
+                </header>
+                <div class="barra"><span class="barra__preench" data-largura="0"></span></div>
+                <a class="curso-card__acao" href="artigo.html?curso=Banco-de-Dados&etapa=1">
+                    <span class="acao-texto">Começar</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+                </a>
+            </article>
+
+        </section>
+
+    </main>
+
+    <script src="js/ofensiva.js"></script>
+
+    <script>
+        /* Tudo nesta tela vem do progresso salvo no navegador.
+           Sem dados, tudo começa em zero. */
+        (function () {
+            const CURSOS = ["Front-End", "Banco-de-Dados"];
+
+            function lerTexto(chave) {
+                try {
+                    return localStorage.getItem(chave);
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            /* etapas feitas de um curso: 0 a 5 */
+            function progresso(curso) {
+                if (lerTexto("concluido-" + curso) === "true") return 5;
+                const p = parseInt(lerTexto("progresso-" + curso) || "0", 10) || 0;
+                return Math.min(Math.max(p, 0), 5);
+            }
+
+            /* próximo passo do curso, de acordo com o progresso */
+            function linkProximo(curso, p) {
+                if (p >= 5) return "curso.html?curso=" + curso;
+                if (p === 0) return "artigo.html?curso=" + curso + "&etapa=1";
+                if (p === 1) return "artigo.html?curso=" + curso + "&etapa=2";
+                if (p === 2) return "quiz-modulo.html?curso=" + curso + "&quiz=1";
+                if (p === 3) return "quiz-modulo.html?curso=" + curso + "&quiz=2";
+                return "avaliacao.html?curso=" + curso;
+            }
+
+            /* cards dos cursos */
+            document.querySelectorAll(".curso-card").forEach((card) => {
+                const curso = card.dataset.curso;
+                if (!CURSOS.includes(curso)) return;
+
+                const p = progresso(curso);
+                const pct = Math.round((p / 5) * 100);
+
+                card.querySelector(".curso-card__pct").textContent = pct + "%";
+                card.querySelector(".barra__preench").dataset.largura = pct;
+
+                const acao = card.querySelector(".curso-card__acao");
+                acao.href = linkProximo(curso, p);
+                acao.querySelector(".acao-texto").textContent = p === 0 ? "Começar" : "Continuar";
+            });
+
+            /* módulo em destaque: o último curso aberto */
+            const ultimo = lerTexto("ultimoCurso");
+            const cursoDestaque = CURSOS.includes(ultimo) ? ultimo : "Front-End";
+            const nomeCurso = lerTexto("ultimoCursoNome") || cursoDestaque.replace("-", " ");
+            const etapas = progresso(cursoDestaque);
+            const faltam = 5 - etapas;
+            const nenhumCurso = CURSOS.every((c) => progresso(c) === 0);
+
+            const resumo = document.getElementById("resumo-trilha");
+            if (nenhumCurso) {
+                resumo.textContent = "Você ainda não começou nenhum curso. Escolha um na biblioteca para começar.";
+            } else if (faltam > 0) {
+                resumo.textContent = `Você está a ${faltam} lição${faltam === 1 ? "" : "ões"} de concluir o módulo "${nomeCurso}". Mantenha o ritmo!`;
+            } else {
+                resumo.textContent = `Você concluiu o módulo "${nomeCurso}". Parabéns!`;
+            }
+
+            /* etapas: feita, atual ou bloqueada */
+            document.querySelectorAll(".etapa").forEach((el) => {
+                const n = parseInt(el.dataset.etapa, 10);
+                if (n <= etapas) {
+                    el.classList.add("etapa--feita");
+                } else if (n === etapas + 1) {
+                    el.classList.add("etapa--atual");
+                    const aviso = document.createElement("span");
+                    aviso.className = "etapa__aviso";
+                    aviso.textContent = "Andamento";
+                    el.appendChild(aviso);
+                } else {
+                    el.classList.add("etapa--bloqueada");
+                }
+            });
+
+            /* dias consecutivos: 7 segmentos conforme a sequência */
+            const dias = window.TechSaberOfensiva ? TechSaberOfensiva.ler() : 0;
+            document.getElementById("dias-consecutivos").textContent = dias;
+
+            const barra = document.getElementById("barra-dias");
+            barra.innerHTML = "";
+            for (let i = 0; i < 7; i++) {
+                const seg = document.createElement("span");
+                seg.className = "card-dias__seg" + (i < dias ? " card-dias__seg--on" : "");
+                barra.appendChild(seg);
+            }
+
+            /* anima as barras de progresso depois de carregar */
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    document.querySelectorAll(".barra__preench").forEach((b) => {
+                        b.style.width = b.dataset.largura + "%";
+                    });
+                }, 150);
+            });
+        })();
+    </script>
+
+    <script src="js/assistente.js"></script>
+
+</body>
+</html>
