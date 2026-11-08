@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSaber+ | Esqueci minha senha</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@500;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina-login">
+
+    <!-- NAVBAR -->
+    <header class="topo">
+        <nav class="topo-nav">
+            <a href="index.html" class="logo">TechSaber+</a>
+            <div class="topo-botoes">
+                <a href="login.html" class="btn-vidro">Voltar</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="login-main">
+
+        <section class="form-section" aria-label="Recuperar senha">
+
+            <article class="login-card">
+                <p class="eyebrow">Recuperar acesso</p>
+                <h2>Esqueceu sua senha?</h2>
+
+                <output class="msg-erro" id="msg-erro" style="display:none;" role="alert">
+                    Digite um e-mail válido.
+                </output>
+
+                <output class="msg-sucesso" id="msg-sucesso" style="display:none;" role="status">
+                    Demonstração: em um sistema completo, enviaríamos um link para o seu e-mail.
+                </output>
+
+                <fieldset>
+                    <legend class="sr-only">Recuperar senha</legend>
+
+                    <label for="email-recuperar">E-mail cadastrado</label>
+                    <input type="email" id="email-recuperar" placeholder="digite seu e-mail" autocomplete="email">
+                </fieldset>
+
+                <button class="btn-entrar" id="btn-enviar-link">Enviar link</button>
+
+                <footer class="login-rodape" id="rodape-demo" style="display:none;">
+                    <a href="nova-senha.html">Abrir o link do e-mail (demonstração)</a>
+                </footer>
+
+                <footer class="login-rodape">
+                    <a href="login.html">Voltar para o login</a>
+                </footer>
+            </article>
+
+        </section>
+
+    </main>
+
+    <script>
+        /* Demonstração: não envia e-mail nenhum. Só valida o formato e mostra o aviso. */
+        (function () {
+            const campo   = document.getElementById("email-recuperar");
+            const erro    = document.getElementById("msg-erro");
+            const sucesso = document.getElementById("msg-sucesso");
+            const rodape  = document.getElementById("rodape-demo");
+
+            document.getElementById("btn-enviar-link").addEventListener("click", () => {
+                const email = campo.value.trim();
+                const valido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+                erro.style.display    = valido ? "none" : "block";
+                sucesso.style.display = valido ? "block" : "none";
+                rodape.style.display  = valido ? "block" : "none";
+            });
+        })();
+    </script>
+
+</body>
+</html>
