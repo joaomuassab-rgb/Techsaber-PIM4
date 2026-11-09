@@ -122,3 +122,55 @@ function abrirQuiz() {
 
     mostrarPergunta();
 }
+
+/* BOTÃO DE INÍCIO (casinha)
+   Coloca a casinha no começo da barra de cima de todas as telas.
+   Na tela inicial (index.html) ela não aparece, porque já é a própria tela inicial. */
+(function botaoInicio() {
+    const SVG_CASA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+        '<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg>';
+
+    function montar() {
+        const pagina = window.location.pathname.split("/").pop();
+        if (pagina === "" || pagina === "index.html") return;
+        if (document.querySelector(".btn-inicio")) return;
+
+        /* algumas telas têm os botões direto na nav, sem o bloco .topo-botoes:
+           junta esses botões num grupo, para a casinha ficar ao lado deles */
+        let areas = document.querySelectorAll(".topo-botoes");
+        if (areas.length === 0) {
+            areas = [];
+            document.querySelectorAll(".topo-nav").forEach((nav) => {
+                const grupo = document.createElement("div");
+                grupo.className = "topo-botoes";
+                grupo.style.cssText = "display:flex;align-items:center;gap:0.5rem;";
+                Array.from(nav.children)
+                    .filter((el) => !el.classList.contains("logo"))
+                    .forEach((el) => grupo.appendChild(el));
+                if (grupo.children.length > 0) {
+                    nav.appendChild(grupo);
+                    areas.push(grupo);
+                }
+            });
+        }
+
+        areas.forEach((area) => {
+            const link = document.createElement("a");
+            link.href = "index.html";
+            link.className = "btn-inicio";
+            link.title = "Início";
+            link.setAttribute("aria-label", "Voltar ao início");
+            link.innerHTML = SVG_CASA;
+
+            const primeiroBotao = area.querySelector(".btn-voltar-pagina, .btn-vidro, .btn-sair-pagina, .btn-cta");
+            if (primeiroBotao) area.insertBefore(link, primeiroBotao);
+            else area.appendChild(link);
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", montar);
+    } else {
+        montar();
+    }
+})();
